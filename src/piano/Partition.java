@@ -14,6 +14,7 @@ import java.util.Iterator;
  */
 public class Partition implements Serializable{
 
+    private static final long serialVersionUID = 111111111;
     private Vector<Morceau> partition;
     
     public Partition(){

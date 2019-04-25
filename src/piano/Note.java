@@ -15,6 +15,7 @@ import java.net.URL;
  */
 public class Note extends Thread implements Serializable {
     
+    private static final long serialVersionUID = 111111111;
     private TypeNote type;
     private URL ul;
     private int freq;

@@ -16,6 +16,7 @@ Si un utilisateur souhaite faire une partition de plus de 5 secondes, un deuxiem
  */
 public class Morceau implements Serializable {
     
+    private static final long serialVersionUID = 111111111;
     private int duree;
     private Note[][] morceau;
     final int MAXTICK = 50;

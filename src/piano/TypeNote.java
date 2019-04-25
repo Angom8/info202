@@ -14,6 +14,7 @@ public enum TypeNote implements Serializable {
     
     PIANO, BIT, JAZZ, SECRET;
     
+    private static final long serialVersionUID = 111111111;
     private final String atr;
     
     TypeNote(String atr){
