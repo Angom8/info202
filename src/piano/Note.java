@@ -28,7 +28,7 @@ public class Note extends Thread {
         this.type = t;
         this.ul = this.getClass().getClassLoader().getResource("/notes/"+type+"/"+freq+".wav");
         this.freq = f;
-        this.son = Applet.nletewAudioClip(this.ul);
+        this.son = Applet.newAudioClip(this.ul);
         
     }
     /**
@@ -36,7 +36,6 @@ public class Note extends Thread {
  * @return le type de la note (bit, piano)
  **/
     public TypeNote getType(){
-        
         
         return(type);
         
@@ -69,12 +68,31 @@ public class Note extends Thread {
  *toString de la classe
  * @return la desc de la note
  **/
-    public String toString(){
+    public String toString(){//utile pour la sauvegarde de fichier uniquement
         
+        String retour = "";
         
-        return("La note de type " + type + " avec une frequence de "+ freq + " au repertoire "+ ul);
+        switch(this.type){
+            case PIANO:
+                retour += "p";
+                break;
+            case BIT:
+                retour += "b";
+                break;
+            case JAZZ:
+                retour += "b";
+                break;
+            case SECRET:
+                retour += "s";
+                break; 
+            default:
+                retour += "s";
+                break;   
+        }
         
-        
+        retour += this.freq;
+                
+        return(retour);       
     }
     
     public void jouer() {

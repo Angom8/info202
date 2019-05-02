@@ -46,6 +46,24 @@ public class Morceau {
         
     }
     
+    public Morceau(Note[][] notes){
+        
+        morceau = new Note[MAXTICK][MAXNOTE];
+        
+        for(int i = 0; i<MAXTICK ; i++){
+            
+            for(int j = 0; j < MAXNOTE ; j++){
+                
+               this.ajouterNote(notes[i][j], i , j);
+                
+            }
+            
+        }
+        
+        nouvelleDuree();
+        
+    }
+    
     public Note[][] getMorceau(){return morceau;}
     public int getDuree(){return duree;}
     public Note getNote(int x, int y){return morceau[x][y];}
