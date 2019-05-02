@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package piano;
-import java.io.Serializable;
 import java.util.Vector;
 import java.util.Iterator;
         
@@ -14,7 +13,6 @@ import java.util.Iterator;
  */
 public class Partition implements Serializable{
 
-    private static final long serialVersionUID = 111111111;
     private Vector<Morceau> partition;
     
     public Partition(){

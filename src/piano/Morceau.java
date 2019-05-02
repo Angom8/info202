@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package piano;
-import java.io.Serializable;
 
 /*Un morceau dure 5 secondes, soit 100 ticks. Un tick correspond a 0.1 secondes. Une case de tableau vers la droite correspond a un tick. Il est possible
 de mettre jusqu'a 10 Notes par colonne, soit 10 en un tick.
@@ -14,9 +13,8 @@ Si un utilisateur souhaite faire une partition de plus de 5 secondes, un deuxiem
  *La partition, un ensemble de notes dans un tableau a deux dimensions.
  * @author antoine
  */
-public class Morceau implements Serializable {
+public class Morceau {
     
-    private static final long serialVersionUID = 111111111;
     private int duree;
     private Note[][] morceau;
     final int MAXTICK = 50;

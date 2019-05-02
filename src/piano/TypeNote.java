@@ -4,17 +4,15 @@
  * and open the template in the editor.
  */
 package piano;
-import java.io.Serializable;
 
 /**
  *Le type de note
  * @author antoine
  */
-public enum TypeNote implements Serializable {
+public enum TypeNote {
     
     PIANO, BIT, JAZZ, SECRET;
-    
-    private static final long serialVersionUID = 111111111;
+
     private final String atr;
     
     TypeNote(String atr){

@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package piano;
-import java.io.Serializable;
 import java.applet.Applet;
 import java.applet.AudioClip;
 import java.net.URL;
@@ -13,9 +12,8 @@ import java.net.URL;
  *Class Note jouant des sons en fonction de la position du fichier avec un type de note (piano, bit) et une freq aigue, grave, 123456789
  * @author antoine
  */
-public class Note extends Thread implements Serializable {
+public class Note extends Thread {
     
-    private static final long serialVersionUID = 111111111;
     private TypeNote type;
     private URL ul;
     private int freq;
