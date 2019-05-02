@@ -8,7 +8,10 @@ import java.util.Vector;
 import java.util.Iterator;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
-import java.io.IOException;        
+import java.io.IOException;   
+import java.io.FileNotFoundException;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 /**
  *
@@ -61,6 +64,8 @@ public class Partition{
             }
             
             retour = true;
+            out.flush();
+            out.close();
 
         }
         catch (IOException err) {
@@ -68,6 +73,25 @@ public class Partition{
         }
         
         return(retour);
+     }
+    
+    public void loadPartition(String nomFichier){
+         
+        Iterator<Morceau> e = this.partition.iterator();
+        String contenu = null;
+        
+        try{
+	    	BufferedReader in = new BufferedReader(new FileReader(nomFichier));
+	    	contenu = in.readLine();
+	    	in.close();
+        }
+        catch (FileNotFoundException f) {
+	    	System.out.println("Probleme de fichier avec " + nomFichier);
+        }
+        catch (IOException err) {
+	    	System.out.println("Probleme de lecture : " + err.getMessage());
+        }
+            
      } 
     
     
