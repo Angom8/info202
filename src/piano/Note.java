@@ -31,6 +31,15 @@ public class Note extends Thread {
         this.son = Applet.newAudioClip(this.ul);
         
     }
+    
+    public Note(){
+        
+        this.type = null;
+        this.ul = null;
+        this.freq = 0;
+        this.son =null;
+        
+    }
     /**
  *Obtenir le type de note
  * @return le type de la note (bit, piano)
@@ -45,12 +54,29 @@ public class Note extends Thread {
  *Obtenir le lien vers le son
  * @return le lien vers le son
  **/
-    public URL getURL(){
+    
+    public void setType(TypeNote t){
+
+        this.type = t;
+
+    }
         
-        
-        return(ul);
-        
-        
+    public void setURL(){
+
+        this.ul = this.getClass().getClassLoader().getResource("/notes/"+type+"/"+freq+".wav");
+
+    }
+    
+    public void setSon(){
+
+        this.son = Applet.newAudioClip(this.ul);
+
+    }
+    
+    public void setFreq(int f){
+
+        this.freq = f;
+
     }
             /**
  *Obtenir la frequence de son, de 1 a 9
@@ -80,7 +106,7 @@ public class Note extends Thread {
                 retour += "b";
                 break;
             case JAZZ:
-                retour += "b";
+                retour += "j";
                 break;
             case SECRET:
                 retour += "s";

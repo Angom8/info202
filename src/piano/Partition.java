@@ -49,18 +49,19 @@ public class Partition{
         boolean retour = false;
         
         try{
-            BufferedWriter out = new BufferedWriter(new FileWriter(nomFichier, true));
+            BufferedWriter out = new BufferedWriter(new FileWriter(nomFichier + ".note", true));
             
             while(e.hasNext()){
                 tab = e.next().getMorceau();
                 
                 for(i=0;i<tab.length;i++){
                     for(j=0;j<tab[i].length;j++){
-                        out.write(tab[i][j].toString() + ",");
+                        out.write(tab[i][j].toString());
                     
                     }
                     out.write("|");
                 }
+                out.write("%");
             }
             
             retour = true;
@@ -76,14 +77,70 @@ public class Partition{
      }
     
     public void loadPartition(String nomFichier){
-         
-        Iterator<Morceau> e = this.partition.iterator();
-        String contenu = null;
+        
+        char[] contenu = null;
+        int i, j, k = 0;
+        int g = 0;
         
         try{
-	    	BufferedReader in = new BufferedReader(new FileReader(nomFichier));
-	    	contenu = in.readLine();
+	    	BufferedReader in = new BufferedReader(new FileReader(nomFichier + ".note"));
+                contenu = in.readLine().toCharArray();
 	    	in.close();
+                
+                while(contenu[i]!='#'){//fichier fini?
+                    
+                    this.partition.add(g, new Morceau());
+                    
+                    while(contenu[i]!='%'){//nouveau morceau ?
+                        
+                        j = 0;
+                        k++;
+                        
+                        while(contenu[i]!='|'){//nouvelle ligne de tableau ?
+                            
+                            this.partition.get(g).ajouterNote(new Note(), j , k);
+                            
+                            switch(contenu[i]){
+                                  case 'p':
+                                    this.partition.get(g).getNote(j, k).setType(TypeNote.PIANO);
+                                    break;
+                                  case 'b':
+                                    this.partition.get(g).getNote(j, k).setType(TypeNote.BIT);
+                                    break;
+                                  case 'j':
+                                    this.partition.get(g).getNote(j, k).setType(TypeNote.JAZZ);
+                                    break; 
+                                  case 's':
+                                    this.partition.get(g).getNote(j, k).setType(TypeNote.SECRET);
+                                    break; 
+                                  default:
+                                    this.partition.get(g).getNote(j, k).setType(TypeNote.SECRET);
+                                    break;                                     
+                            }
+                        
+                            i++;
+                            
+                            this.partition.get(g).getNote(j, k).setFreq((int)(contenu[i]));
+                            this.partition.get(g).getNote(j, k).setURL();
+                            this.partition.get(g).getNote(j, k).setSon();
+                            
+                            i++;
+                            j++;
+                        }
+                        
+                        i++;
+                        
+                    }
+                    this.partition.get(g).nouvelleDuree();
+                    
+                    i++;
+                    g++;
+                    
+                    
+                }
+                
+            in.close();
+            
         }
         catch (FileNotFoundException f) {
 	    	System.out.println("Probleme de fichier avec " + nomFichier);
@@ -91,7 +148,7 @@ public class Partition{
         catch (IOException err) {
 	    	System.out.println("Probleme de lecture : " + err.getMessage());
         }
-            
+           
      } 
     
     
