@@ -12,18 +12,4 @@ package piano;
 public enum TypeNote {
     
     PIANO, BIT, JAZZ, SECRET;
-
-    private final String atr;
-    
-    TypeNote(String atr){
-        
-        this.atr = atr;
-    }
-    
-    @Override
-    public String toString(){
-        
-        return(atr);
-    }
-    
 }
