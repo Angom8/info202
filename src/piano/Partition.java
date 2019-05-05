@@ -41,15 +41,14 @@ public class Partition{
     
     public Vector<Morceau> getPartition(){return partition;}
     
-    public boolean savePartition(String nomFichier){
+    public void savePartition(java.io.File fichier){
          
         Iterator<Morceau> e = this.partition.iterator();
         Note[][] tab = null;
         int i, j = 0;
-        boolean retour = false;
         
         try{
-            BufferedWriter out = new BufferedWriter(new FileWriter(nomFichier + ".note", true));
+            BufferedWriter out = new BufferedWriter(new FileWriter(fichier, true));
             
             while(e.hasNext()){
                 tab = e.next().getMorceau();
@@ -64,7 +63,6 @@ public class Partition{
                 out.write("%");
             }
             
-            retour = true;
             out.flush();
             out.close();
 
@@ -73,17 +71,16 @@ public class Partition{
             System.out.println("Probleme de fichier : " + err.getMessage());
         }
         
-        return(retour);
      }
     
-    public void loadPartition(String nomFichier){
+    public void loadPartition(java.io.File fichier){
         
         char[] contenu = null;
         int i, j, k = 0;
         int g = 0;
         
         try{
-	    	BufferedReader in = new BufferedReader(new FileReader(nomFichier + ".note"));
+	    	BufferedReader in = new BufferedReader(new FileReader(fichier));
                 contenu = in.readLine().toCharArray();
 	    	in.close();
                 
@@ -143,7 +140,7 @@ public class Partition{
             
         }
         catch (FileNotFoundException f) {
-	    	System.out.println("Probleme de fichier avec " + nomFichier);
+	    	System.out.println("Probleme de fichier avec " + fichier.getName());
         }
         catch (IOException err) {
 	    	System.out.println("Probleme de lecture : " + err.getMessage());

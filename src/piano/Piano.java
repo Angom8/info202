@@ -146,7 +146,7 @@ public class Piano extends Game {
      */
     public void saveGame(java.io.File file){
 
-        partition.savePartition(file.getName());
+        partition.savePartition(file);
        
     }
     
@@ -156,7 +156,7 @@ public class Piano extends Game {
      */
     public void loadGame(java.io.File file){
         
-        partition.loadPartition(file.getName());
+        partition.loadPartition(file);
         
     }
         
