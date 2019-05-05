@@ -12,6 +12,14 @@ import javax.swing.WindowConstants;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JFrame;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
 /**
  *
  * @author Antoine
@@ -56,6 +64,11 @@ public class Piano extends Game {
             .addGap(0, 458, Short.MAX_VALUE)
         );
 
+        try {
+			lune = ImageIO.read(new File("lune.gif"));
+			terre = ImageIO.read(new File("world.gif"));
+	}
+        
         fenetreGlobal.pack();
     }   
     public void saveGame(java.io.File file){
