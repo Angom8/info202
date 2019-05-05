@@ -4,20 +4,20 @@
  * and open the template in the editor.
  */
 package piano;
-import java.applet.Applet;
-import java.applet.AudioClip;
-import java.net.URL;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import java.io.File;
 
 /**
  *Class Note jouant des sons en fonction de la position du fichier avec un type de note (piano, bit) et une freq aigue, grave, 123456789
  * @author antoine
  */
-public class Note extends Thread {
+public class Note {
     
     private TypeNote type;
-    private URL ul;
+    private String ul;
     private int freq;
-    private AudioClip son;
+    private Media son;
     
   /**
  *Construc par init
@@ -26,9 +26,9 @@ public class Note extends Thread {
     public Note(TypeNote t, int f){
         
         this.type = t;
-        this.ul = this.getClass().getClassLoader().getResource("/notes/"+type+"/"+freq+".wav");
+        this.ul = "notes/"+type+"/"+freq+".wav";
         this.freq = f;
-        this.son = Applet.newAudioClip(this.ul);
+        this.son = new Media(new File(ul).toURI().toString());
         
     }
     
@@ -63,13 +63,13 @@ public class Note extends Thread {
         
     public void setURL(){
 
-        this.ul = this.getClass().getClassLoader().getResource("/notes/"+type+"/"+freq+".wav");
+        this.ul = "/notes/"+type+"/"+freq+".wav";
 
     }
     
     public void setSon(){
 
-        this.son = Applet.newAudioClip(this.ul);
+        this.son = new Media(new File(ul).toURI().toString());
 
     }
     
