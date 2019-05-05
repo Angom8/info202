@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 package piano;
+import java.io.File;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import java.io.File;
+import javafx.embed.swing.JFXPanel;
 
 /**
  *Class Note jouant des sons en fonction de la position du fichier avec un type de note (piano, bit) et une freq aigue, grave, 123456789
@@ -122,13 +124,10 @@ public class Note {
     }
     
     public void jouer() {
-        son.play();
-    }
-    public void jouerEnBoucle() {
-        son.loop();
-    }
-    public void arreter() {
-        son.stop();
+        final JFXPanel fxPanel = new JFXPanel();
+        Media sound = new Media(new File(this.ul).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
     }
     
 }
