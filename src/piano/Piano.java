@@ -4,16 +4,22 @@
  * and open the template in the editor.
  */
 package piano;
+import javax.swing.JMenuBar;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.WindowConstants;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
  * @author antoine
  */
-public class Piano extends javax.swing.JFrame {
+public class Piano extends Game {
     private final Container parent;
+    private Partition partition;
+    public final String name = "Piano";
     /**
      * Creates new form InterfacePiano
      */
@@ -21,6 +27,11 @@ public class Piano extends javax.swing.JFrame {
         super("Piano");
         this.parent= parent;
         initComponents();
+    }
+    
+    public Piano() {
+        initComponents();
+        parent = null;
     }
 
     /**
@@ -71,7 +82,7 @@ public class Piano extends javax.swing.JFrame {
         jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButton3);
 
-        TypeNote.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        TypeNote.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PIANO", "JAZZ", "BIT" }));
         TypeNote.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TypeNoteActionPerformed(evt);
@@ -129,7 +140,36 @@ public class Piano extends javax.swing.JFrame {
     private void TypeNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TypeNoteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TypeNoteActionPerformed
+    /**
+     *
+     * @param file The file where the game as to be saved
+     */
+    public void saveGame(java.io.File file){
 
+        partition.savePartition(file.getName());
+       
+    }
+    
+     /**
+     *
+     * @param file The file from where the game as to be restored
+     */
+    public void loadGame(java.io.File file){
+        
+        partition.loadPartition(file.getName());
+        
+    }
+        
+    public abstract void startGame();//useless since the Piano is not a "true" game
+    
+    public abstract void stopGame();//useless since the Piano is not a "true" game
+       
+    public abstract void pauseGame();//useless since the Piano is not a "true" game
+    
+    public String getName()
+    {
+        return this.name;
+    }
     /**
      * @param args the command line arguments
      */
