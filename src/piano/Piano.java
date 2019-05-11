@@ -49,7 +49,7 @@ public class Piano extends Game {
         partition = new Partition();
         fenetre = new JPanel();
         fenetre.setVisible(true);
-        NOTE_SELECTED = TypeNote.PIANO;
+        NOTE_SELECTED = TypeNote.JAZZ;
         recording = false;
         initComponents();
 
@@ -96,18 +96,54 @@ public class Piano extends Game {
         jButton5.setText("");
 
         jButton6.setText("");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
 
         jButton8.setText("");
+        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton8MouseClicked(evt);
+            }
+        });
 
         jButton7.setText("");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
 
         jButton9.setText("");
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton9MouseClicked(evt);
+            }
+        });
 
         jButton10.setText("");
-
+        jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton10MouseClicked(evt);
+            }
+        });
+        
+        
         jButton11.setText("");
+        jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton11MouseClicked(evt);
+            }
+        });
 
         jButton12.setText("");
+        jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton12MouseClicked(evt);
+            }
+        });
 
         jButton13.setText("");
         jButton13.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -264,8 +300,204 @@ public class Piano extends Game {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
-    }        
+    }   
+  
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {   
+        
+        String note = "";
+        
+        switch(NOTE_SELECTED){
+            case PIANO:
+                note += "p";
+                break;
+            case BIT:
+                note += "b";
+                break;
+            case JAZZ:
+                note += "j";
+                break;
+            case SECRET:
+                note += "s";
+                break; 
+            default:
+                note += "s";
+                break;   
+        }
+        
+        final JFXPanel fxPanel = new JFXPanel();
+        Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+3+".wav").toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+    }    
     
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {   
+        
+        String note = "";
+        
+        switch(NOTE_SELECTED){
+            case PIANO:
+                note += "p";
+                break;
+            case BIT:
+                note += "b";
+                break;
+            case JAZZ:
+                note += "j";
+                break;
+            case SECRET:
+                note += "s";
+                break; 
+            default:
+                note += "s";
+                break;   
+        }
+        
+        final JFXPanel fxPanel = new JFXPanel();
+        Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+4+".wav").toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+    }
+    
+    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {   
+        
+        String note = "";
+        
+        switch(NOTE_SELECTED){
+            case PIANO:
+                note += "p";
+                break;
+            case BIT:
+                note += "b";
+                break;
+            case JAZZ:
+                note += "j";
+                break;
+            case SECRET:
+                note += "s";
+                break; 
+            default:
+                note += "s";
+                break;   
+        }
+        
+        final JFXPanel fxPanel = new JFXPanel();
+        Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+5+".wav").toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+    }
+    
+    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {   
+        
+        String note = "";
+        
+        switch(NOTE_SELECTED){
+            case PIANO:
+                note += "p";
+                break;
+            case BIT:
+                note += "b";
+                break;
+            case JAZZ:
+                note += "j";
+                break;
+            case SECRET:
+                note += "s";
+                break; 
+            default:
+                note += "s";
+                break;   
+        }
+        
+        final JFXPanel fxPanel = new JFXPanel();
+        Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+6+".wav").toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+    }
+    
+    private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {   
+        
+        String note = "";
+        
+        switch(NOTE_SELECTED){
+            case PIANO:
+                note += "p";
+                break;
+            case BIT:
+                note += "b";
+                break;
+            case JAZZ:
+                note += "j";
+                break;
+            case SECRET:
+                note += "s";
+                break; 
+            default:
+                note += "s";
+                break;   
+        }
+        
+        final JFXPanel fxPanel = new JFXPanel();
+        Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+7+".wav").toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+    }
+    
+    private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {   
+        
+        String note = "";
+        
+        switch(NOTE_SELECTED){
+            case PIANO:
+                note += "p";
+                break;
+            case BIT:
+                note += "b";
+                break;
+            case JAZZ:
+                note += "j";
+                break;
+            case SECRET:
+                note += "s";
+                break; 
+            default:
+                note += "s";
+                break;   
+        }
+        
+        final JFXPanel fxPanel = new JFXPanel();
+        Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+8+".wav").toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+    }
+
+    private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {   
+        
+        String note = "";
+        
+        switch(NOTE_SELECTED){
+            case PIANO:
+                note += "p";
+                break;
+            case BIT:
+                note += "b";
+                break;
+            case JAZZ:
+                note += "j";
+                break;
+            case SECRET:
+                note += "s";
+                break; 
+            default:
+                note += "s";
+                break;   
+        }
+        
+        final JFXPanel fxPanel = new JFXPanel();
+        Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+9+".wav").toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+    }
+
     private void jButton13MouseClicked(java.awt.event.MouseEvent evt) {   
         
         String note = "";
