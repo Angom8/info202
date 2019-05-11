@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package piano;
-import java.io.File;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import java.io.File;
@@ -28,7 +27,7 @@ public class Note {
     public Note(TypeNote t, int f){
         
         this.type = t;
-        this.ul = "notes/"+type+"/"+freq+".wav";
+        this.ul = System.getProperty("user.dir") + "/src/piano/notes/"+type+"/"+freq+".wav";
         this.freq = f;
         this.son = new Media(new File(ul).toURI().toString());
         

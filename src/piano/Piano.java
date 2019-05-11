@@ -23,6 +23,10 @@ import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import java.io.File;
+import javafx.embed.swing.JFXPanel;
 
 
 /**
@@ -33,7 +37,9 @@ public class Piano extends Game {
     
     private Container parent;
     private Partition partition;
-    private JInternalFrame fenetre;
+    private JPanel fenetre;
+    private TypeNote NOTE_SELECTED;
+    private boolean recording;
     /**
      * Creates new form InterfacePiano
      */
@@ -41,107 +47,264 @@ public class Piano extends Game {
         super("Piano");
         this.parent= parent;
         partition = new Partition();
-        fenetre = new JInternalFrame();
+        fenetre = new JPanel();
         fenetre.setVisible(true);
+        NOTE_SELECTED = TypeNote.PIANO;
+        recording = false;
         initComponents();
+
     }
     
     public Piano() {
         super("Piano");
-        this.parent = null;
+        JFrame temp = new JFrame();
+        temp.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+        temp.setSize(1000, 1000);
+        temp.setResizable(true);
+        temp.setLocationRelativeTo(null);
+        temp.setVisible(true);
+        parent = temp.getContentPane();
         partition = new Partition();
-        fenetre = new JInternalFrame();
+        fenetre = new JPanel();
         initComponents();
         
         
     }
-     @SuppressWarnings("unchecked")                       
+    
+    @SuppressWarnings("unchecked")                       
     private void initComponents() {
         
-        jMenuBar = new JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        Load = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jPanel2 = new javax.swing.JPanel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jToolBar1 = new javax.swing.JToolBar();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
 
-        jMenu1.setText("File");
+        jButton4.setText("");
 
-        Load.setText("Load");
-        Load.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoadMouseClicked(evt);
+        jButton5.setText("");
+
+        jButton6.setText("");
+
+        jButton8.setText("");
+
+        jButton7.setText("");
+
+        jButton9.setText("");
+
+        jButton10.setText("");
+
+        jButton11.setText("");
+
+        jButton12.setText("");
+
+        jButton13.setText("");
+        jButton13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton13MouseClicked(evt);
             }
         });
-        
-        jMenu1.add(Load);
 
-        jMenuItem1.setText("Save");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem1);
-
-        jMenuBar.add(jMenu1);
-
-        fenetre.setJMenuBar(jMenuBar);
-        
         try{
-        JPanel pan = new ImagePane(ImageIO.read(new File(("user.dir") + "/src/piano/img/piano.png")));
+            
+            System.out.println(System.getProperty("user.dir") + "/src/piano/img/piano.png");
+            jPanel2 = new ImagePane(ImageIO.read(new File(System.getProperty("user.dir") + "/src/piano/img/piano.png")));
         }
         catch(IOException e){
             System.out.println("Erreur : "+ e.getMessage());
         }
         
-        fenetre.add(jMenuBar);
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jButton4, 80,80, 80)
+                .addGap(1, 1, 1)
+                .addComponent(jButton6, 75,75, 75)
+                .addGap(1, 1, 1)
+                .addComponent(jButton8, 80,80, 80)
+                .addGap(1, 1, 1)
+                .addComponent(jButton9, 80,80, 80)
+                .addGap(1, 1, 1)
+                .addComponent(jButton11, 80,80, 80)
+                .addGap(1, 1, 1)
+                .addComponent(jButton13, 76,76, 76))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(96, 96,96)
+                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0))
+                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(2, 2, 2)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton11, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                            .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                            .addComponent(jButton13, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE) )))
+                .addContainerGap())
+        );
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Piano", "Jazz", "BIT", "???" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        jToolBar1.setRollover(true);
+
+        jButton1.setText("REC");
+        jButton1.setFocusable(false);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButton1);
+
+        jButton2.setText("STOP");
+        jButton2.setFocusable(false);
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButton2);
+
+        jButton3.setText("PLAY");
+        jButton3.setFocusable(false);
+        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jButton3);
+
+        jToolBar1.add(jComboBox1);
         
+        javax.swing.GroupLayout fenetreLayout = new javax.swing.GroupLayout(fenetre);
+        fenetre.setLayout(fenetreLayout);
+        fenetreLayout.setHorizontalGroup(
+            fenetreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fenetreLayout.createSequentialGroup()
+                .addGroup(fenetreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(150, Short.MAX_VALUE))
+        );
+        fenetreLayout.setVerticalGroup(
+            fenetreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fenetreLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(91, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(parent);
         parent.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup())
-                .addComponent(fenetre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 819, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(fenetre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 469, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(fenetre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
  
     }   
     
-    private void LoadActionPerformed(java.awt.event.ActionEvent evt) {                                     
+     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-    }                                    
+    }                                        
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+    }                                        
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+    }        
+    
+    private void jButton13MouseClicked(java.awt.event.MouseEvent evt) {   
+        
+        String note = "";
+        
+        switch(NOTE_SELECTED){
+            case PIANO:
+                note += "p";
+                break;
+            case BIT:
+                note += "b";
+                break;
+            case JAZZ:
+                note += "j";
+                break;
+            case SECRET:
+                note += "s";
+                break; 
+            default:
+                note += "s";
+                break;   
+        }
+        
+        final JFXPanel fxPanel = new JFXPanel();
+        Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+10+".wav").toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+    }     
+    
+    public void saveGame(java.io.File file){
+
         filtreFichier filtre = new filtreFichier();
         JFileChooser choix = new JFileChooser();
         choix.addChoosableFileFilter(filtre);
-        choix.setCurrentDirectory(new java.io.File("/home/antoine/NetBeansProjects/Piano/src/piano/partitions"));
+        choix.setCurrentDirectory(new java.io.File("/"));
         int retour=choix.showOpenDialog(this.parent);
         if(retour==JFileChooser.APPROVE_OPTION){
             partition.loadPartition(choix.getSelectedFile());
         }
         else {} ;// pas de fichier choisi
-    } 
-    
-    private void LoadMouseClicked(java.awt.event.ActionEvent evt) {
-        
-        filtreFichier filtre = new filtreFichier();
-        JFileChooser choix = new JFileChooser();
-        choix.addChoosableFileFilter(filtre);
-        choix.setCurrentDirectory(new java.io.File("/home/antoine/NetBeansProjects/Piano/src/piano/partitions"));
-        int retour=choix.showOpenDialog(this.parent);
-        if(retour==JFileChooser.APPROVE_OPTION){
-            partition.savePartition(choix.getSelectedFile());
-        }
-        else {} ;// pas de fichier choisi
-        
-       
-    }    
-    
-    public void saveGame(java.io.File file){
-
-        partition.savePartition(file);
        
     }
     
@@ -151,7 +314,15 @@ public class Piano extends Game {
      */
     public void loadGame(java.io.File file){
         
-        partition.loadPartition(file);
+        filtreFichier filtre = new filtreFichier();
+        JFileChooser choix = new JFileChooser();
+        choix.addChoosableFileFilter(filtre);
+        choix.setCurrentDirectory(new java.io.File("/"));
+        int retour=choix.showOpenDialog(this.parent);
+        if(retour==JFileChooser.APPROVE_OPTION){
+            partition.savePartition(choix.getSelectedFile());
+        }
+        else {} ;// pas de fichier choisi
         
     }
     
@@ -164,9 +335,26 @@ public class Piano extends Game {
     {
         return super.getName();
     }
-    private javax.swing.JMenuItem Load;
-    private javax.swing.JMenu jMenu1;
-    private JMenuBar jMenuBar;
-    private javax.swing.JMenuItem jMenuItem1;
+    
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JToolBar jToolBar1;
+    
+    
 }    
+
+
 
