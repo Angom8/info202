@@ -65,6 +65,8 @@ public class Testing extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton16 = new javax.swing.JButton();
+        jButton17 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -84,6 +86,7 @@ public class Testing extends javax.swing.JFrame {
 
         jButton10.setText("jButton10");
 
+        jButton11.setBackground(new java.awt.Color(255, 0, 0));
         jButton11.setText("jButton11");
 
         jButton12.setText("jButton12");
@@ -159,6 +162,7 @@ public class Testing extends javax.swing.JFrame {
 
         jToolBar1.setRollover(true);
 
+        jButton1.setBackground(new java.awt.Color(255, 0, 0));
         jButton1.setText("REC");
         jButton1.setFocusable(false);
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -187,6 +191,28 @@ public class Testing extends javax.swing.JFrame {
         jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButton3);
 
+        jButton16.setText("Reset");
+        jButton16.setFocusable(false);
+        jButton16.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton16.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButton16);
+
+        jButton17.setText("Reset Style");
+        jButton17.setFocusable(false);
+        jButton17.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton17.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButton17);
+
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -213,7 +239,7 @@ public class Testing extends javax.swing.JFrame {
                 .addGap(127, 127, 127)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(137, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -268,6 +294,14 @@ public class Testing extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1KeyPressed
 
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton16ActionPerformed
+
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton17ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -311,6 +345,8 @@ public class Testing extends javax.swing.JFrame {
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;

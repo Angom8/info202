@@ -62,8 +62,8 @@ public class Partition{
     public void savePartition(java.io.File fichier){
          
         Iterator<Morceau> e = this.partition.iterator();
-        Note[] tab = null;
-        int i = 0;
+        Note[] tab;
+        int i;
         
         try{
             BufferedWriter out = new BufferedWriter(new FileWriter(fichier, true));
@@ -166,6 +166,36 @@ public class Partition{
         }
         
      } 
-    
-    
+ /**
+ * Reset la partition
+ */     
+    public void reset(){
+        
+        Iterator<Morceau> e = this.partition.iterator(); 
+        
+        while(e.hasNext()){
+                e.next().reset();
+         }
+    } 
+ /**
+ * Change le style de toute la fichier
+ * @param t le nouveau style
+ */     
+    public void resetstyle(TypeNote t){
+        
+        Iterator<Morceau> e = this.partition.iterator(); 
+        int i;
+        Note[] tab; 
+        
+        while(e.hasNext()){
+               tab =  e.next().getMorceau();
+               
+               for (i = 0; i<tab.length; i++){
+                   
+                   tab[i].setType(t);
+                   tab[i].setURL();
+                   tab[i].setSon();
+               }
+         }
+    } 
 }
