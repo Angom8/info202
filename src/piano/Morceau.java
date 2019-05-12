@@ -16,28 +16,30 @@ Si un utilisateur souhaite faire une partition de plus de 5 secondes, un deuxiem
 public class Morceau {
     
     private int duree;
-    private Note[][] morceau;
+    private Note[] morceau;
     final int MAXTICK = 50;
-    final int MAXNOTE = 10;
+    
+  /**
+ *Construc par defaut
+ */    
     
     public Morceau(){
         
-        morceau = new Note[MAXTICK][MAXNOTE];//!!!!0 a 49 et 0 a 9
+        morceau = new Note[MAXTICK];//!!!!0 a 49
         duree = 0;
         
     }
-    
+  /**
+ *Construc par copie
+ * @param m le morceau de base
+ */     
     public Morceau(Morceau m){
         
-        morceau = new Note[MAXTICK][MAXNOTE];//copie profonde pour le morceau, surface pour les notes
+        morceau = new Note[MAXTICK];//copie profonde pour le morceau, surface pour les notes
         
         for(int i = 0; i<MAXTICK ; i++){
-            
-            for(int j = 0; j < MAXNOTE ; j++){
-                
-               this.ajouterNote(m.getNote(i, j), i , j);
-                
-            }
+               
+            this.ajouterNote(m.getNote(i), i);    
             
         }
         
@@ -46,92 +48,97 @@ public class Morceau {
         
     }
     
-    public Morceau(Note[][] notes){
+      /**
+ *Construc par init
+ * @param notes le tableau de note
+ */ 
+    public Morceau(Note[] notes){
         
-        morceau = new Note[MAXTICK][MAXNOTE];
+        morceau = new Note[MAXTICK];
         
         for(int i = 0; i<MAXTICK ; i++){
-            
-            for(int j = 0; j < MAXNOTE ; j++){
-                
-               this.ajouterNote(notes[i][j], i , j);
-                
-            }
-            
+       
+           this.ajouterNote(notes[i], i );
+   
         }
         
         nouvelleDuree();
         
     }
     
-    public Note[][] getMorceau(){return morceau;}
-    public int getDuree(){return duree;}
-    public Note getNote(int x, int y){return morceau[x][y];}
+      /**
+ *Getter du morceau
+ * @return le tableau de notes
+ */     
     
-    public void ajouterNote(Note n, int x, int y){
+    public Note[] getMorceau(){return morceau;}
+    
+      /**
+ *Getter de la duree du morceau
+ * @return la duree
+ */    
+    
+    public int getDuree(){return duree;}
+    
+       /**
+ *Getter de la note a partir d'une position
+ * @param x la position
+ * @return la note
+ */   
+
+    public Note getNote(int x){return morceau[x];}
+    
+       /**
+ *Setter de la note a partir d'une position et d'une note (ofc)
+ * @param n la note
+ * @param x la position
+ */      
+    
+    public void ajouterNote(Note n, int x){
         
         if(duree<x){duree=x;}
         
-        morceau[x][y] = n;
+        morceau[x] = n;
             
     }
-    
+        /**
+ *Setter inverse de la note a partir d'une position
+ * @param x la position
+ */     
         
-    public void retirerNote(int x, int y){
+    public void retirerNote(int x){
         
-        morceau[x][y] = null;
+        morceau[x] = null;
         
          nouvelleDuree();
             
     }
-    
-    public void retirerLigne(int y){
+/**
+ *Reset le morceau
+ */   
+    public void reset(){
         
         for(int i = 0; i<MAXTICK; i++){
-         morceau[i][y] = null;
+         morceau[i] = null;
         }
         
          nouvelleDuree();
             
     }
-    
-        
-    public void retirerColonne(int x){
-        
-        for(int j = 0;j<MAXNOTE; j++){
-         morceau[x][j] = null;
-        }
-        
-         nouvelleDuree();
-            
-    }
-    
-
-    public void ajouterNoteRep(Note n, int y, int t){
-        
-        for(int i = 0; i<MAXTICK; i+=t){
-         morceau[i][y] = n;
-        }
-        
-        nouvelleDuree();//redefinit duree
-       
-            
-    }
-    
+/**
+ *Definir la duree automatiquement
+ */      
     public void nouvelleDuree(){
         
         int max = 0;
-        int j = 0;
-        int i;
+        int i = 0;
                 
         
-        while(j<MAXNOTE&max<MAXTICK){
-            for(i = max; i<MAXTICK;i++){
-                if(morceau[i][j]!=null){
+        while(i<MAXTICK){
+                if(morceau[i]!=null){
                     max = i;
                 }
-            }
-            j++;
+                i++;
         }
             
         this.duree = max;

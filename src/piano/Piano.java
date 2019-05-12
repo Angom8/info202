@@ -326,7 +326,7 @@ public class Piano extends Game {
         }
         catch(IOException e){
             System.out.println("Erreur : "+ e.getMessage());
-        }
+}
         
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

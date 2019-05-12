@@ -21,11 +21,20 @@ public class Partition{
 
     private Vector<Morceau> partition;
     
+/**
+ * Constructeur par defaut
+ */    
+  
     public Partition(){
         
         partition = new Vector<Morceau>();
         
     }
+
+/**
+ * Constructeur par copie
+ * @param p la partition de base
+ */ 
     
     public Partition(Partition p){//copie profonde
         
@@ -38,14 +47,23 @@ public class Partition{
         }
                 
     }
-    
+ 
+ /**
+ * Getter de la partition
+ * @return la partition
+ */    
     public Vector<Morceau> getPartition(){return partition;}
+    
+ /**
+ * Sauvegarde de la partition
+ * @param fichier de destination
+ */      
     
     public void savePartition(java.io.File fichier){
          
         Iterator<Morceau> e = this.partition.iterator();
-        Note[][] tab = null;
-        int i, j = 0;
+        Note[] tab = null;
+        int i = 0;
         
         try{
             BufferedWriter out = new BufferedWriter(new FileWriter(fichier, true));
@@ -54,14 +72,11 @@ public class Partition{
                 tab = e.next().getMorceau();
                 
                 for(i=0;i<tab.length;i++){
-                    for(j=0;j<tab[i].length;j++){
-                        out.write(tab[i][j].toString());
-                    
-                    }
-                    out.write("|");
+                        out.write(tab[i].toString());
                 }
-                out.write("%");
+                out.write("|");
             }
+            out.write("#");
             
             out.flush();
             out.close();
@@ -72,13 +87,16 @@ public class Partition{
         }
         
      }
-    
+
+ /**
+ * Chargement de la partition
+ * @param fichier de base
+ */ 
     public void loadPartition(java.io.File fichier){
         
-        char[] contenu = null;
+        char[] contenu;
         int i = 0; 
-        int j = 0;
-        int k = 0;
+        int j;
         int g = 0;
         
         try{
@@ -90,38 +108,37 @@ public class Partition{
                     
                     this.partition.add(g, new Morceau());
                     
-                    while(contenu[i]!='%'){//nouveau morceau ?
+                    while(contenu[i]!='|'){//nouveau morceau ?
                         
                         j = 0;
-                        k++;
                         
                         while(contenu[i]!='|'){//nouvelle ligne de tableau ?
                             
-                            this.partition.get(g).ajouterNote(new Note(), j , k);
+                            this.partition.get(g).ajouterNote(new Note(), j);
                             
                             switch(contenu[i]){
                                   case 'p':
-                                    this.partition.get(g).getNote(j, k).setType(TypeNote.PIANO);
+                                    this.partition.get(g).getNote(j).setType(TypeNote.PIANO);
                                     break;
                                   case 'b':
-                                    this.partition.get(g).getNote(j, k).setType(TypeNote.BIT);
+                                    this.partition.get(g).getNote(j).setType(TypeNote.BIT);
                                     break;
                                   case 'j':
-                                    this.partition.get(g).getNote(j, k).setType(TypeNote.JAZZ);
+                                    this.partition.get(g).getNote(j).setType(TypeNote.JAZZ);
                                     break; 
                                   case 's':
-                                    this.partition.get(g).getNote(j, k).setType(TypeNote.SECRET);
+                                    this.partition.get(g).getNote(j).setType(TypeNote.SECRET);
                                     break; 
                                   default:
-                                    this.partition.get(g).getNote(j, k).setType(TypeNote.SECRET);
+                                    this.partition.get(g).getNote(j).setType(TypeNote.SECRET);
                                     break;                                     
                             }
                         
                             i++;
                             
-                            this.partition.get(g).getNote(j, k).setFreq((int)(contenu[i]));
-                            this.partition.get(g).getNote(j, k).setURL();
-                            this.partition.get(g).getNote(j, k).setSon();
+                            this.partition.get(g).getNote(j).setFreq((int)(contenu[i]));
+                            this.partition.get(g).getNote(j).setURL();
+                            this.partition.get(g).getNote(j).setSon();
                             
                             i++;
                             j++;
@@ -147,7 +164,7 @@ public class Partition{
         catch (IOException err) {
 	    	System.out.println("Probleme de lecture : " + err.getMessage());
         }
-           
+        
      } 
     
     

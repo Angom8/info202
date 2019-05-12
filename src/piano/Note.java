@@ -22,6 +22,8 @@ public class Note {
     
   /**
  *Construc par init
+ * @param t type de la note
+ * @param f sa frequence
  */
     
     public Note(TypeNote t, int f){
@@ -32,7 +34,9 @@ public class Note {
         this.son = new Media(new File(ul).toURI().toString());
         
     }
-    
+   /**
+ *Construc par init
+ */   
     public Note(){
         
         this.type = null;
@@ -52,8 +56,8 @@ public class Note {
         
     }
         /**
- *Obtenir le lien vers le son
- * @return le lien vers le son
+ *Definir le type de la note
+ * @param t le type
  **/
     
     public void setType(TypeNote t){
@@ -61,19 +65,26 @@ public class Note {
         this.type = t;
 
     }
-        
+         /**
+ *Definir automatiquement le lien vers le son
+ **/       
     public void setURL(){
 
         this.ul = "/notes/"+type+"/"+freq+".wav";
 
     }
-    
+         /**
+ *Definir automatiquement le son
+ **/     
     public void setSon(){
 
         this.son = new Media(new File(ul).toURI().toString());
 
     }
-    
+/**
+ *Definir automatiquement la frequence
+ * @param f la frequence
+ **/    
     public void setFreq(int f){
 
         this.freq = f;
@@ -93,8 +104,9 @@ public class Note {
     
                 /**
  *toString de la classe
- * @return la desc de la note
+ * @return la note sous forme type+frequence en bref
  **/
+    @Override
     public String toString(){//utile pour la sauvegarde de fichier uniquement
         
         String retour = "";
@@ -121,7 +133,9 @@ public class Note {
                 
         return(retour);       
     }
-    
+/**
+ *Jouer la note
+ **/    
     public void jouer() {
         final JFXPanel fxPanel = new JFXPanel();
         Media sound = new Media(new File(this.ul).toURI().toString());

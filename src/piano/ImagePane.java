@@ -6,7 +6,7 @@
 package piano;
 
 /**
- *
+ *Classe permettant de generer des images via un JPanel
  * @author antoine
  */
 import java.awt.Graphics;
@@ -16,11 +16,19 @@ import javax.swing.JPanel;
 public class ImagePane extends JPanel {
      
     protected Image buffer;    
-     
+    
+             /**
+ *Construc par init
+ * @param buffer le flux de lecture du fichier
+ **/ 
     public ImagePane(Image buffer){
         this.buffer = buffer;
     }  
-         
+             /**
+ *Dessiner le fichier
+ * @param g le pane de lecture de l'image
+ **/     
+    @Override
     public void paintComponent(Graphics g) {
        g.drawImage(buffer,0,0,null);
      }
