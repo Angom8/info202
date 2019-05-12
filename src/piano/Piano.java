@@ -49,7 +49,7 @@ public class Piano extends Game {
         partition = new Partition();
         fenetre = new JPanel();
         fenetre.setVisible(true);
-        NOTE_SELECTED = TypeNote.JAZZ;
+        NOTE_SELECTED = TypeNote.PIANO;
         recording = false;
         initComponents();
 
@@ -92,65 +92,232 @@ public class Piano extends Game {
         jButton13 = new javax.swing.JButton();
 
         jButton4.setText("");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked();
+            }
+        });
+       jButton4.setMnemonic(java.awt.event.KeyEvent.VK_A);
+       jButton4.addKeyListener(new java.awt.event.KeyListener(){
+           
+           
+            public void keyPressed(java.awt.event.KeyEvent e) {}
 
+            public void keyReleased(java.awt.event.KeyEvent e) {if (e.getKeyCode()== java.awt.event.KeyEvent.VK_A) {jButton4MouseClicked();}}
+
+            public void keyTyped(java.awt.event.KeyEvent e) {}
+              
+                 }
+          );
+       jButton4.setOpaque(false);
+       jButton4.setContentAreaFilled(false);
+       jButton4.setBorderPainted(false);
+       
+       
         jButton5.setText("");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked();
+            }
+        });
+       jButton5.setMnemonic(java.awt.event.KeyEvent.VK_Z);
+       jButton5.addKeyListener(new java.awt.event.KeyListener(){
+           
+           
+            public void keyPressed(java.awt.event.KeyEvent e) {}
 
+            public void keyReleased(java.awt.event.KeyEvent e) {if (e.getKeyCode()== java.awt.event.KeyEvent.VK_Z) {jButton5MouseClicked();}}
+
+            public void keyTyped(java.awt.event.KeyEvent e) {}
+              
+                 }
+        );
+       jButton5.setOpaque(false);
+       jButton5.setContentAreaFilled(false);
+       jButton5.setBorderPainted(false);
+       
         jButton6.setText("");
         jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton6MouseClicked(evt);
+                jButton6MouseClicked();
             }
         });
+       jButton6.setMnemonic(java.awt.event.KeyEvent.VK_E);
+       jButton6.addKeyListener(new java.awt.event.KeyListener(){
+           
+           
+            public void keyPressed(java.awt.event.KeyEvent e) {}
 
+            public void keyReleased(java.awt.event.KeyEvent e) {if (e.getKeyCode()== java.awt.event.KeyEvent.VK_E) {jButton6MouseClicked();}}
+
+            public void keyTyped(java.awt.event.KeyEvent e) {}
+              
+                 }
+        );
+       jButton6.setOpaque(false);
+       jButton6.setContentAreaFilled(false);
+       jButton6.setBorderPainted(false);        
+       
+       
+        
         jButton8.setText("");
         jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton8MouseClicked(evt);
+                jButton8MouseClicked();
             }
         });
+       jButton8.setMnemonic(java.awt.event.KeyEvent.VK_T);
+       jButton8.addKeyListener(new java.awt.event.KeyListener(){
+           
+           
+            public void keyPressed(java.awt.event.KeyEvent e) {}
+
+            public void keyReleased(java.awt.event.KeyEvent e) {if (e.getKeyCode()== java.awt.event.KeyEvent.VK_T) {jButton8MouseClicked();}}
+
+            public void keyTyped(java.awt.event.KeyEvent e) {}
+              
+                 }
+        );       
+       jButton8.setOpaque(false);
+       jButton8.setContentAreaFilled(false);
+       jButton8.setBorderPainted(false);        
+        
 
         jButton7.setText("");
         jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton7MouseClicked(evt);
+                jButton7MouseClicked();
             }
         });
+       jButton7.setMnemonic(java.awt.event.KeyEvent.VK_R);
+       jButton7.addKeyListener(new java.awt.event.KeyListener(){
+           
+           
+            public void keyPressed(java.awt.event.KeyEvent e) {}
 
+            public void keyReleased(java.awt.event.KeyEvent e) {if (e.getKeyCode()== java.awt.event.KeyEvent.VK_R) {jButton7MouseClicked();}}
+
+            public void keyTyped(java.awt.event.KeyEvent e) {}
+              
+                 }
+        );
+       jButton7.setOpaque(false);
+       jButton7.setContentAreaFilled(false);
+       jButton7.setBorderPainted(false);
+       
+       
+       
         jButton9.setText("");
         jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton9MouseClicked(evt);
+                jButton9MouseClicked();
             }
         });
+       jButton9.setMnemonic(java.awt.event.KeyEvent.VK_Y);
+       jButton9.addKeyListener(new java.awt.event.KeyListener(){
+           
+           
+            public void keyPressed(java.awt.event.KeyEvent e) {}
 
+            public void keyReleased(java.awt.event.KeyEvent e) {if (e.getKeyCode()== java.awt.event.KeyEvent.VK_Y) {jButton9MouseClicked();}}
+
+            public void keyTyped(java.awt.event.KeyEvent e) {}
+              
+                 }
+        );
+       jButton9.setOpaque(false);
+       jButton9.setContentAreaFilled(false);
+       jButton9.setBorderPainted(false);        
+        
+        
         jButton10.setText("");
         jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton10MouseClicked(evt);
+                jButton10MouseClicked();
             }
         });
-        
+       jButton10.setMnemonic(java.awt.event.KeyEvent.VK_U);
+       jButton10.addKeyListener(new java.awt.event.KeyListener(){
+           
+           
+            public void keyPressed(java.awt.event.KeyEvent e) {}
+
+            public void keyReleased(java.awt.event.KeyEvent e) {if (e.getKeyCode()== java.awt.event.KeyEvent.VK_U) {jButton10MouseClicked();}}
+
+            public void keyTyped(java.awt.event.KeyEvent e) {}
+              
+                 }
+        );        
+       jButton10.setOpaque(false);
+       jButton10.setContentAreaFilled(false);
+       jButton10.setBorderPainted(false);            
         
         jButton11.setText("");
         jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton11MouseClicked(evt);
+                jButton11MouseClicked();
             }
         });
+       jButton11.setMnemonic(java.awt.event.KeyEvent.VK_I);
+       jButton11.addKeyListener(new java.awt.event.KeyListener(){
+           
+           
+            public void keyPressed(java.awt.event.KeyEvent e) {}
+
+            public void keyReleased(java.awt.event.KeyEvent e) {if (e.getKeyCode()== java.awt.event.KeyEvent.VK_I) {jButton11MouseClicked();}}
+
+            public void keyTyped(java.awt.event.KeyEvent e) {}
+              
+                 }
+        );     
+       jButton11.setOpaque(false);
+       jButton11.setContentAreaFilled(false);
+       jButton11.setBorderPainted(false);        
+        
 
         jButton12.setText("");
         jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton12MouseClicked(evt);
+                jButton12MouseClicked();
             }
         });
+       jButton12.setMnemonic(java.awt.event.KeyEvent.VK_O);
+       jButton12.addKeyListener(new java.awt.event.KeyListener(){
+           
+           
+            public void keyPressed(java.awt.event.KeyEvent e) {}
 
+            public void keyReleased(java.awt.event.KeyEvent e) {if (e.getKeyCode()== java.awt.event.KeyEvent.VK_O) {jButton12MouseClicked();}}
+
+            public void keyTyped(java.awt.event.KeyEvent e) {}
+              
+                 }
+        );    
+       jButton12.setOpaque(false);
+       jButton12.setContentAreaFilled(false);
+       jButton12.setBorderPainted(false);        
+        
         jButton13.setText("");
         jButton13.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton13MouseClicked(evt);
+                jButton13MouseClicked();
             }
         });
+       jButton13.setMnemonic(java.awt.event.KeyEvent.VK_P);
+       jButton13.addKeyListener(new java.awt.event.KeyListener(){
+           
+           
+            public void keyPressed(java.awt.event.KeyEvent e) {}
+
+            public void keyReleased(java.awt.event.KeyEvent e) {if (e.getKeyCode()== java.awt.event.KeyEvent.VK_P) {jButton13MouseClicked();}}
+
+            public void keyTyped(java.awt.event.KeyEvent e) {}
+              
+                 }
+        );    
+       jButton13.setOpaque(false);
+       jButton13.setContentAreaFilled(false);
+       jButton13.setBorderPainted(false);
 
         try{
             
@@ -209,7 +376,7 @@ public class Piano extends Game {
                             .addComponent(jButton11, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                             .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                             .addComponent(jButton13, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE) )))
-                .addContainerGap())
+                )
         );
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Piano", "Jazz", "BIT", "???" }));
@@ -223,22 +390,22 @@ public class Piano extends Game {
 
         jButton1.setText("REC");
         jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked();
             }
         });
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButton1);
 
         jButton2.setText("STOP");
         jButton2.setFocusable(false);
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked();
             }
         });
         jToolBar1.add(jButton2);
@@ -259,7 +426,7 @@ public class Piano extends Game {
                 .addGroup(fenetreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(150, Short.MAX_VALUE))
+                )
         );
         fenetreLayout.setVerticalGroup(
             fenetreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,10 +442,8 @@ public class Piano extends Game {
         parent.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 819, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(fenetre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         layout.setVerticalGroup(
@@ -290,19 +455,96 @@ public class Piano extends Game {
  
     }   
     
-     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
-    }                                        
+    private void jButton1MouseClicked() {  
+       this.recording = true;
+    }                                     
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+    private void jButton2MouseClicked() {  
+       this.recording = false;
     }                                        
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
+        String selected = (String)jComboBox1.getSelectedItem();
+        
+        switch(selected){
+            
+            case "Jazz":
+                NOTE_SELECTED = TypeNote.JAZZ;
+                break;
+                     
+            case "Piano":
+                NOTE_SELECTED = TypeNote.PIANO;
+                break;
+            case "BIT":
+                NOTE_SELECTED = TypeNote.BIT;
+                break;                
+            default:
+                NOTE_SELECTED = TypeNote.SECRET;
+                break;                
+                 
+            
+        }
+        
+        
     }   
-  
-    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {   
+ 
+    private void jButton4MouseClicked() {   
+        
+        String note = "";
+        
+        switch(NOTE_SELECTED){
+            case PIANO:
+                note += "p";
+                break;
+            case BIT:
+                note += "b";
+                break;
+            case JAZZ:
+                note += "j";
+                break;
+            case SECRET:
+                note += "s";
+                break; 
+            default:
+                note += "s";
+                break;   
+        }
+        
+        final JFXPanel fxPanel = new JFXPanel();
+        Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+1+".wav").toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+    } 
+    
+    private void jButton5MouseClicked() {   
+        
+        String note = "";
+        
+        switch(NOTE_SELECTED){
+            case PIANO:
+                note += "p";
+                break;
+            case BIT:
+                note += "b";
+                break;
+            case JAZZ:
+                note += "j";
+                break;
+            case SECRET:
+                note += "s";
+                break; 
+            default:
+                note += "s";
+                break;   
+        }
+        
+        final JFXPanel fxPanel = new JFXPanel();
+        Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+2+".wav").toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+    }    
+
+    private void jButton6MouseClicked() {   
         
         String note = "";
         
@@ -330,7 +572,7 @@ public class Piano extends Game {
         mediaPlayer.play();
     }    
     
-    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {   
+    private void jButton7MouseClicked() {   
         
         String note = "";
         
@@ -358,7 +600,7 @@ public class Piano extends Game {
         mediaPlayer.play();
     }
     
-    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {   
+    private void jButton8MouseClicked() {   
         
         String note = "";
         
@@ -386,7 +628,7 @@ public class Piano extends Game {
         mediaPlayer.play();
     }
     
-    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {   
+    private void jButton9MouseClicked() {   
         
         String note = "";
         
@@ -414,7 +656,7 @@ public class Piano extends Game {
         mediaPlayer.play();
     }
     
-    private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {   
+    private void jButton10MouseClicked() {   
         
         String note = "";
         
@@ -442,7 +684,7 @@ public class Piano extends Game {
         mediaPlayer.play();
     }
     
-    private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {   
+    private void jButton11MouseClicked() {   
         
         String note = "";
         
@@ -470,7 +712,7 @@ public class Piano extends Game {
         mediaPlayer.play();
     }
 
-    private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {   
+    private void jButton12MouseClicked() {   
         
         String note = "";
         
@@ -498,7 +740,7 @@ public class Piano extends Game {
         mediaPlayer.play();
     }
 
-    private void jButton13MouseClicked(java.awt.event.MouseEvent evt) {   
+    private void jButton13MouseClicked() {   
         
         String note = "";
         

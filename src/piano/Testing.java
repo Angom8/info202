@@ -75,6 +75,7 @@ public class Testing extends javax.swing.JFrame {
 
         jButton6.setText("jButton6");
 
+        jButton8.setBackground(new java.awt.Color(255, 255, 255));
         jButton8.setText("jButton8");
 
         jButton7.setText("jButton7");
@@ -187,9 +188,19 @@ public class Testing extends javax.swing.JFrame {
         jToolBar1.add(jButton3);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox1ItemStateChanged(evt);
+            }
+        });
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
+            }
+        });
+        jComboBox1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboBox1KeyPressed(evt);
             }
         });
         jToolBar1.add(jComboBox1);
@@ -248,6 +259,14 @@ public class Testing extends javax.swing.JFrame {
     private void jButton13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton13MouseClicked
        System.out.println("test"); // TODO add your handling code here:
     }//GEN-LAST:event_jButton13MouseClicked
+
+    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ItemStateChanged
+
+    private void jComboBox1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1KeyPressed
 
     /**
      * @param args the command line arguments

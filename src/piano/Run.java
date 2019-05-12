@@ -17,7 +17,7 @@ class Run{
         javax.swing.JFrame jFrame = new javax.swing.JFrame("Piano");
         
 	jFrame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
-        jFrame.setSize(700, 500);
+        jFrame.setSize(483, 405);
         jFrame.setResizable(false);
         jFrame.setLocationRelativeTo(null);
         
