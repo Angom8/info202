@@ -1,4 +1,4 @@
-package Launcher_Example;
+package launcher;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

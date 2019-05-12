@@ -1,4 +1,4 @@
-package Launcher_Example;
+package launcher;
 
 import javafx.stage.FileChooser;
 import javafx.stage.DirectoryChooser;
@@ -7,8 +7,7 @@ import javafx.scene.layout.Pane;
 import javafx.embed.swing.SwingNode;
 import javafx.scene.control.Label;
 
-import Launcher_Example.Game.FindMe.FindMeGame;
-import Launcher_Example.Game.Game;
+import piano.*;
 import javafx.stage.Stage;
 //import javafx.scene.control.Button;
 
@@ -102,7 +101,7 @@ public class Controller {
         System.out.println("ACTION = Change");
         javax.swing.JPanel panel = new javax.swing.JPanel();
         SwingNode swingNode = new SwingNode();
-        currentGame = new FindMeGame(panel);
+        currentGame = new Piano(panel);
         gameNameLabel.setText(currentGame.getName());
         swingNode.setContent(panel);
         gamePanel.getChildren().add(swingNode);
