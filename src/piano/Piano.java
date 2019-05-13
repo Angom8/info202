@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package piano;
-import launcher.Game;
+import launcher_piano.Game;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -42,6 +42,7 @@ public class Piano extends Game {
     private TypeNote NOTE_SELECTED;
     private boolean recording;
     private OffsetTime start = null;
+    public final JFXPanel fxPanel = new JFXPanel();
     /**
      * Creates new form InterfacePiano
      */
@@ -94,6 +95,7 @@ public class Piano extends Game {
         jButton13 = new javax.swing.JButton();
         jButton14 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
+        javax.swing.JButton test = new javax.swing.JButton();
 
         jButton4.setText("");
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -461,6 +463,17 @@ public class Piano extends Game {
         jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButton3);
         
+        test.setText("TEST");
+        test.setFocusable(false);
+        test.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        test.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(test);
+        test.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                testClicked();
+            }
+        });
+        
         jButton14.setText("RESET");
         jButton14.setFocusable(false);
         jButton14.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -492,7 +505,7 @@ public class Piano extends Game {
             .addGroup(fenetreLayout.createSequentialGroup()
                 .addGroup(fenetreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
                 )
         );
         fenetreLayout.setVerticalGroup(
@@ -529,6 +542,12 @@ public class Piano extends Game {
        start = OffsetTime.now();
     }                                     
 
+    //will be deleted once the projet is finished
+    private void testClicked() {  
+       loadGame();
+       System.out.println(this.partition);
+    }   
+    
     private void jButton2MouseClicked() {  
        this.recording = false;
        jButton1.setBackground(new java.awt.Color(255, 255, 255));
@@ -598,7 +617,6 @@ public class Piano extends Game {
                 break;   
         }
         
-        final JFXPanel fxPanel = new JFXPanel();
         Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+1+".wav").toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
@@ -670,7 +688,6 @@ public class Piano extends Game {
                 break;   
         }
         
-        final JFXPanel fxPanel = new JFXPanel();
         Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+2+".wav").toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
@@ -742,7 +759,6 @@ public class Piano extends Game {
                 break;   
         }
         
-        final JFXPanel fxPanel = new JFXPanel();
         Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+3+".wav").toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
@@ -814,7 +830,6 @@ public class Piano extends Game {
                 break;   
         }
         
-        final JFXPanel fxPanel = new JFXPanel();
         Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+4+".wav").toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
@@ -886,7 +901,6 @@ public class Piano extends Game {
                 break;   
         }
         
-        final JFXPanel fxPanel = new JFXPanel();
         Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+5+".wav").toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
@@ -958,7 +972,6 @@ public class Piano extends Game {
                 break;   
         }
         
-        final JFXPanel fxPanel = new JFXPanel();
         Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+6+".wav").toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
@@ -1030,7 +1043,6 @@ public class Piano extends Game {
                 break;   
         }
         
-        final JFXPanel fxPanel = new JFXPanel();
         Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+7+".wav").toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
@@ -1101,7 +1113,6 @@ public class Piano extends Game {
                 break;   
         }
         
-        final JFXPanel fxPanel = new JFXPanel();
         Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+8+".wav").toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
@@ -1173,7 +1184,7 @@ public class Piano extends Game {
                 break;   
         }
         
-        final JFXPanel fxPanel = new JFXPanel();
+        
         Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+9+".wav").toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
@@ -1244,7 +1255,6 @@ public class Piano extends Game {
                 break;   
         }
         
-        final JFXPanel fxPanel = new JFXPanel();
         Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+10+".wav").toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
@@ -1298,8 +1308,8 @@ public class Piano extends Game {
 
 
 
-    
-    public void saveGame(java.io.File file){
+    public void saveGame(File f){}
+    public void saveGame(){
 
         filtreFichier filtre = new filtreFichier();
         JFileChooser choix = new JFileChooser();
@@ -1315,9 +1325,10 @@ public class Piano extends Game {
     
      /**
      *
-     * @param file The file from where the game as to be restored
+     *
      */
-    public void loadGame(java.io.File file){
+    public void loadGame(File f){}
+    public void loadGame(){
         
         filtreFichier filtre = new filtreFichier();
         JFileChooser choix = new JFileChooser();
@@ -1325,7 +1336,7 @@ public class Piano extends Game {
         choix.setCurrentDirectory(new java.io.File("/"));
         int retour=choix.showOpenDialog(this.parent);
         if(retour==JFileChooser.APPROVE_OPTION){
-            partition.savePartition(choix.getSelectedFile());
+            partition.loadPartition(choix.getSelectedFile());
         }
         else {} ;// pas de fichier choisi
         

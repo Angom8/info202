@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package piano;
-import launcher.Game;
+import launcher_piano.Game;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

@@ -1,19 +1,36 @@
-package launcher;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package launcher_piano;
 
-import javafx.stage.FileChooser;
-import javafx.stage.DirectoryChooser;
-import javafx.fxml.FXML;
-import javafx.scene.layout.Pane;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.embed.swing.SwingNode;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-
-import piano.*;
+import javafx.scene.layout.Pane;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-//import javafx.scene.control.Button;
+import piano.*;
 
-public class Controller {
+/**
+ * FXML Controller class
+ *
+ * @author Antoine
+ */
+public class LauncherController implements Initializable {
 
-    private Game currentGame;
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+    }    
+    
+        private Game currentGame;
     
     private Stage primaryStage;
     
@@ -106,5 +123,5 @@ public class Controller {
         swingNode.setContent(panel);
         gamePanel.getChildren().add(swingNode);
     }
+    
 }
-

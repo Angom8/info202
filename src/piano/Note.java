@@ -70,7 +70,7 @@ public class Note {
  **/       
     public void setURL(){
 
-        this.ul = "/notes/"+type+"/"+freq+".wav";
+        this.ul = System.getProperty("user.dir") + "/src/piano/notes/"+type+"/"+freq+".wav";
 
     }
          /**

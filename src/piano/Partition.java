@@ -72,7 +72,13 @@ public class Partition{
                 tab = e.next().getMorceau();
                 
                 for(i=0;i<tab.length;i++){
-                        out.write(tab[i].toString());
+                        if (tab[i] == null){
+                            out.write("00");
+                        }
+                        else{
+                            out.write(tab[i].toString());
+                        }
+                        
                 }
                 out.write("|");
             }
@@ -114,33 +120,39 @@ public class Partition{
                         
                         while(contenu[i]!='|'){//nouvelle ligne de tableau ?
                             
-                            this.partition.get(g).ajouterNote(new Note(), j);
+                            if(contenu[i]!='0'){
                             
-                            switch(contenu[i]){
-                                  case 'p':
-                                    this.partition.get(g).getNote(j).setType(TypeNote.PIANO);
-                                    break;
-                                  case 'b':
-                                    this.partition.get(g).getNote(j).setType(TypeNote.BIT);
-                                    break;
-                                  case 'j':
-                                    this.partition.get(g).getNote(j).setType(TypeNote.JAZZ);
-                                    break; 
-                                  case 's':
-                                    this.partition.get(g).getNote(j).setType(TypeNote.SECRET);
-                                    break; 
-                                  default:
-                                    this.partition.get(g).getNote(j).setType(TypeNote.SECRET);
-                                    break;                                     
-                            }
+                                this.partition.get(g).ajouterNote(new Note(), j);
+                            
+                                switch(contenu[i]){
+                                    case 'p':
+                                      this.partition.get(g).getNote(j).setType(TypeNote.PIANO);
+                                      break;
+                                     case 'b':
+                                       this.partition.get(g).getNote(j).setType(TypeNote.BIT);
+                                       break;
+                                   case 'j':
+                                     this.partition.get(g).getNote(j).setType(TypeNote.JAZZ);
+                                     break; 
+                                      case 's':
+                                        this.partition.get(g).getNote(j).setType(TypeNote.SECRET);
+                                        break; 
+                                   default:
+                                     this.partition.get(g).getNote(j).setType(TypeNote.SECRET);
+                                        break;                                     
+                                    }
                         
-                            i++;
+                                     i++;
                             
-                            this.partition.get(g).getNote(j).setFreq((int)(contenu[i]));
-                            this.partition.get(g).getNote(j).setURL();
-                            this.partition.get(g).getNote(j).setSon();
+                                     this.partition.get(g).getNote(j).setFreq((int)(contenu[i]));
+                                     this.partition.get(g).getNote(j).setURL();
+                                     this.partition.get(g).getNote(j).setSon();
                             
-                            i++;
+                                     i++;
+                            }
+                            else{
+                                i += 2;
+                            }
                             j++;
                         }
                         
@@ -198,4 +210,30 @@ public class Partition{
                }
          }
     } 
+     /**
+ * Faire apparaitre les notes (pour test)
+ * @return les notes
+ */     
+    public String toString(){
+        
+        Iterator<Morceau> e = this.partition.iterator(); 
+        int i;
+        Note[] tab; 
+        String retour = "" ;
+        
+        while(e.hasNext()){
+               tab =  e.next().getMorceau();
+               
+               for (i = 0; i<tab.length; i++){
+                   if(tab[i]!=null){
+                      retour += tab[i].toString(); 
+                   }
+                   else{retour += "00";}
+                   
+               }
+         }
+        
+        return(retour);
+        
+    }
 }
