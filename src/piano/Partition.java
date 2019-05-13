@@ -169,7 +169,7 @@ public class Partition{
                 
         }
         catch (FileNotFoundException f) {
-	    	System.out.println("Probleme de fichier avec " + fichier.getName());
+	    	System.out.println("Probleme de fichier avec " + fichier.getName() + f.getMessage());
         }
         catch (IOException err) {
 	    	System.out.println("Probleme de lecture : " + err.getMessage());
