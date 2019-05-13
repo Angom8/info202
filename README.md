@@ -1,4 +1,4 @@
-#The Piano
+#: The Piano
 
 VERSION JAVA SE / FX : 12
 
