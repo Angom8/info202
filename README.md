@@ -1,4 +1,4 @@
-############################THE PIANO######################
+#The Piano
 
 VERSION JAVA SE / FX : 12
 
@@ -14,20 +14,20 @@ REC : Lance l'enregistrement et ecrase la partition en cours (MAX : 4 notes/seco
 STOP : Arrete l'enregistrement
 PLAY : Joue la partition en cours
 RESET : Ecrase la partition
-RESET STYLE : Definit le style de toutes les notes au style s�lectionn�
+RESET STYLE : Definit le style de toutes les notes au style sélectionné
 
 Format de sauvegarde :
 
-Les notes sont sauvegard�s sous le format suivant :
+Les notes sont sauvegardés sous le format suivant :
 
 p100|0000p3#
 
 "p1" : La lettre represente le type de note (p/j/b/s) et le numero la frequence (0 = 10)
 "00" : La note est vide
 
-| : Repr�sente un nouveau morceau (un morceau = 20 notes pour 5 secondes)
+'|' : Représente un nouveau morceau (un morceau = 20 notes pour 5 secondes)
 
-# : fin du fichier
+'#' : fin du fichier
 
 
 ##############################################################
