@@ -446,18 +446,33 @@ public class Piano extends Game {
         
                 while(j<this.partition.getPartition().size()){
                
-                    for (i = 0; i<this.partition.getPartition().get(j).getMorceau().length;i++){
+                    if(j+1>=this.partition.getPartition().size()){//fin de partition
+                        
+                        for (i = 0; i<this.partition.getPartition().get(j).getDuree();i++){
                    
                         if(this.partition.getPartition().get(j).getMorceau()[i]!=null){
                             this.partition.getPartition().get(j).getMorceau()[i].jouer();
                         }
+                        
                         else{Thread.sleep(1000/(MAXTICK/5));}
+                        }
+                        
+                    }
+                    else{
+                     for (i = 0; i<this.partition.getPartition().get(j).getMorceau().length;i++){
+                   
+                            if(this.partition.getPartition().get(j).getMorceau()[i]!=null){
+                               this.partition.getPartition().get(j).getMorceau()[i].jouer();
+                            }
+                        
+                          else{Thread.sleep(1000/(MAXTICK/5));}
+                    }
                     }
                 j++;
                 }
             }
             catch (InterruptedException x) {jButton3.setBackground(new java.awt.Color(255, 255, 255));jButton3.setEnabled(true);}
-
+            jButton3.setBackground(new java.awt.Color(255, 255, 255));jButton3.setEnabled(true);
         }
     }  
     
@@ -557,14 +572,9 @@ public class Piano extends Game {
                     diff = now.getSecond() - this.start.getSecond();
                 }
                 
+                diff *= 4;
                 diff = (int)(diff/(MAXTICK/5));
                 i = 0;
-                
-                while(diff > (this.partition.getPartition().size())*MAXTICK){
-                    this.partition.getPartition().addElement(new Morceau());
-                    diff -= MAXTICK;
-                    i ++;
-                }
                 float nano = now.getNano() - this.start.getNano();
                 
                 if(nano<0){
@@ -579,7 +589,17 @@ public class Piano extends Game {
                 }
                 if(nano<=500000000&nano>250000000){
                     diff +=1;
-                }                
+                }                       
+                
+                while(diff >= MAXTICK){
+                    
+                    diff -= MAXTICK;
+                    if (i+1>=this.partition.getPartition().size()){
+                        this.partition.getPartition().addElement(new Morceau());
+                    }
+                    i++;
+                }
+         
                 
                 
                 this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 1), diff);
@@ -636,17 +656,10 @@ public class Piano extends Game {
                 else{
                     diff = now.getSecond() - this.start.getSecond();
                 }
-                
+                diff *= 4;
                 diff = (int)(diff/(MAXTICK/5));
                 i = 0;
-                
-                while(diff > (this.partition.getPartition().size())*MAXTICK){
-                    this.partition.getPartition().addElement(new Morceau());
-                    diff -= MAXTICK;
-                    i ++;
-                }
-                
-                float nano = now.getNano() - this.start.getNano();
+                 float nano = now.getNano() - this.start.getNano();
                 
                 if(nano<0){
                     nano = 100000000 + nano;
@@ -660,7 +673,17 @@ public class Piano extends Game {
                 }
                 if(nano<=500000000&nano>250000000){
                     diff +=1;
+                }               
+                while(diff >= MAXTICK){
+                    
+                    diff -= MAXTICK;
+                    if (i+1>=this.partition.getPartition().size()){
+                        this.partition.getPartition().addElement(new Morceau());
+                    }
+                    i++;
                 }
+                
+
    
                 this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 2), diff);
   
@@ -716,15 +739,9 @@ public class Piano extends Game {
                 else{
                     diff = now.getSecond() - this.start.getSecond();
                 }
-                
+                diff *= 4;                
                 diff = (int)(diff/(MAXTICK/5));
                 i = 0;
-                
-                while(diff > (this.partition.getPartition().size())*MAXTICK){
-                    this.partition.getPartition().addElement(new Morceau());
-                    diff -= MAXTICK;
-                    i ++;
-                }
                 float nano = now.getNano() - this.start.getNano();
                 
                 if(nano<0){
@@ -739,7 +756,16 @@ public class Piano extends Game {
                 }
                 if(nano<=500000000&nano>250000000){
                     diff +=1;
-                }               
+                }                 
+                while(diff >= MAXTICK){
+                    
+                    diff -= MAXTICK;
+                    if (i+1>=this.partition.getPartition().size()){
+                        this.partition.getPartition().addElement(new Morceau());
+                    }
+                    i++;
+                }
+              
                 this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 3), diff);
   
             }
@@ -794,15 +820,9 @@ public class Piano extends Game {
                 else{
                     diff = now.getSecond() - this.start.getSecond();
                 }
-                
+                diff *= 4;                
                 diff = (int)(diff/(MAXTICK/5));
                 i = 0;
-                
-                while(diff > (this.partition.getPartition().size())*MAXTICK){
-                    this.partition.getPartition().addElement(new Morceau());
-                    diff -= MAXTICK;
-                    i ++;
-                }
                 float nano = now.getNano() - this.start.getNano();
                 
                 if(nano<0){
@@ -817,7 +837,16 @@ public class Piano extends Game {
                 }
                 if(nano<=500000000&nano>250000000){
                     diff +=1;
-                }                
+                }                    
+                while(diff >=MAXTICK){
+                    
+                    diff -= MAXTICK;
+                    if (i+1>=this.partition.getPartition().size()){
+                        this.partition.getPartition().addElement(new Morceau());
+                    }
+                    i++;
+                }
+            
                 this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 4), diff);
   
             }
@@ -873,15 +902,9 @@ public class Piano extends Game {
                 else{
                     diff = now.getSecond() - this.start.getSecond();
                 }
-                
+                diff *= 4;                
                 diff = (int)(diff/(MAXTICK/5));
                 i = 0;
-                
-                while(diff > (this.partition.getPartition().size())*MAXTICK){
-                    this.partition.getPartition().addElement(new Morceau());
-                    diff -= MAXTICK;
-                    i ++;
-                }
                 float nano = now.getNano() - this.start.getNano();
                 
                 if(nano<0){
@@ -896,7 +919,16 @@ public class Piano extends Game {
                 }
                 if(nano<=500000000&nano>250000000){
                     diff +=1;
-                }                
+                }                  
+                while(diff >= MAXTICK){
+                    
+                    diff -= MAXTICK;
+                    if (i+1>=this.partition.getPartition().size()){
+                        this.partition.getPartition().addElement(new Morceau());
+                    }
+                    i++;
+                }
+              
                 this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 5), diff);
   
             }
@@ -951,15 +983,9 @@ public class Piano extends Game {
                 else{
                     diff = now.getSecond() - this.start.getSecond();
                 }
-                
+                diff *= 4;                
                 diff = (int)(diff/(MAXTICK/5));
                 i = 0;
-                
-                while(diff > (this.partition.getPartition().size())*MAXTICK){
-                    this.partition.getPartition().addElement(new Morceau());
-                    diff -= MAXTICK;
-                    i ++;
-                }
                 float nano = now.getNano() - this.start.getNano();
                 
                 if(nano<0){
@@ -974,7 +1000,16 @@ public class Piano extends Game {
                 }
                 if(nano<=500000000&nano>250000000){
                     diff +=1;
-                }                
+                }                  
+                while(diff >= MAXTICK){
+                    
+                    diff -= MAXTICK;
+                    if (i+1>=this.partition.getPartition().size()){
+                        this.partition.getPartition().addElement(new Morceau());
+                    }
+                    i++;
+                }
+              
                 this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 6), diff);
   
             }
@@ -1028,15 +1063,9 @@ public class Piano extends Game {
                 else{
                     diff = now.getSecond() - this.start.getSecond();
                 }
-                
+                diff *= 4;                
                 diff = (int)(diff/(MAXTICK/5));
                 i = 0;
-                
-                while(diff > (this.partition.getPartition().size())*MAXTICK){
-                    this.partition.getPartition().addElement(new Morceau());
-                    diff -= MAXTICK;
-                    i ++;
-                }
                 float nano = now.getNano() - this.start.getNano();
                 
                 if(nano<0){
@@ -1051,7 +1080,16 @@ public class Piano extends Game {
                 }
                 if(nano<=500000000&nano>250000000){
                     diff +=1;
-                }                
+                }                 
+                while(diff >= MAXTICK){
+                    
+                    diff -= MAXTICK;
+                    if (i+1>=this.partition.getPartition().size()){
+                        this.partition.getPartition().addElement(new Morceau());
+                    }
+                    i++;
+                }
+               
                 this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 7), diff);
   
             }
@@ -1107,15 +1145,9 @@ public class Piano extends Game {
                 else{
                     diff = now.getSecond() - this.start.getSecond();
                 }
-                
+                diff *= 4;                
                 diff = (int)(diff/(MAXTICK/5));
                 i = 0;
-                
-                while(diff > (this.partition.getPartition().size())*MAXTICK){
-                    this.partition.getPartition().addElement(new Morceau());
-                    diff -= MAXTICK;
-                    i ++;
-                }
                 float nano = now.getNano() - this.start.getNano();
                 
                 if(nano<0){
@@ -1130,7 +1162,16 @@ public class Piano extends Game {
                 }
                 if(nano<=500000000&nano>250000000){
                     diff +=1;
-                }                
+                }                   
+                while(diff >= MAXTICK){
+                    
+                    diff -= MAXTICK;
+                    if (i+1>=this.partition.getPartition().size()){
+                        this.partition.getPartition().addElement(new Morceau());
+                    }
+                    i++;
+                }
+             
                 this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 8), diff);
   
             }
@@ -1187,15 +1228,9 @@ public class Piano extends Game {
                 else{
                     diff = now.getSecond() - this.start.getSecond();
                 }
-                
+                diff *= 4;                
                 diff = (int)(diff/(MAXTICK/5));
                 i = 0;
-                
-                while(diff > (this.partition.getPartition().size())*MAXTICK){
-                    this.partition.getPartition().addElement(new Morceau());
-                    diff -= MAXTICK;
-                    i ++;
-                }
                 float nano = now.getNano() - this.start.getNano();
                 
                 if(nano<0){
@@ -1210,7 +1245,16 @@ public class Piano extends Game {
                 }
                 if(nano<=500000000&nano>250000000){
                     diff +=1;
-                }                
+                }                   
+                while(diff >= MAXTICK){
+                    
+                    diff -= MAXTICK;
+                    if (i+1>=this.partition.getPartition().size()){
+                        this.partition.getPartition().addElement(new Morceau());
+                    }
+                    i++;
+                }
+             
                 this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 9), diff);
   
             }
@@ -1267,15 +1311,9 @@ public class Piano extends Game {
                 else{
                     diff = now.getSecond() - this.start.getSecond();
                 }
-                
+                diff *= 4;                
                 diff = (int)(diff/(MAXTICK/5));
                 i = 0;
-                
-                while(diff > (this.partition.getPartition().size())*MAXTICK){
-                    this.partition.getPartition().addElement(new Morceau());
-                    diff -= MAXTICK;
-                    i ++;
-                }
                 float nano = now.getNano() - this.start.getNano();
                 
                 if(nano<0){
@@ -1290,7 +1328,16 @@ public class Piano extends Game {
                 }
                 if(nano<=500000000&nano>250000000){
                     diff +=1;
-                }                
+                }                 
+                while(diff >= MAXTICK){
+                    
+                    diff -= MAXTICK;
+                    if (i+1>=this.partition.getPartition().size()){
+                        this.partition.getPartition().addElement(new Morceau());
+                    }
+                    i++;
+                }
+               
                 this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 10), diff);
   
             }
