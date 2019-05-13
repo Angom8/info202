@@ -1319,8 +1319,8 @@ public class Piano extends Game {
      */
     public void loadGame(File f){}
     public void loadGame(){
-    System.out.println((new File(System.getProperty("user.dir") + "/src/piano/partitions/", "test.text")).getAbsolutePath())  ;  
-    partition.loadPartition(new File(System.getProperty("user.dir") + "/src/piano/partitions/", "test.text"));
+    System.out.println((new File(System.getProperty("user.dir") + "/src/piano/partitions/", "def.txt")).getAbsolutePath())  ;  
+    partition.loadPartition(new File(System.getProperty("user.dir") + "/src/piano/partitions/", "def.txt"));
         
     }
     

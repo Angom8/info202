@@ -11,7 +11,9 @@ import java.io.FileWriter;
 import java.io.IOException;   
 import java.io.FileNotFoundException;
 import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.InputStreamReader;
+import java.util.Scanner;
+import java.io.FileInputStream;
 
 /**
  *
@@ -100,20 +102,34 @@ public class Partition{
  */ 
     public void loadPartition(java.io.File fichier){
         
-        char[] contenu;
+        char[] contenu = new char[0];
+        String reading = "";
         int i = 0; 
         int j;
         int g = 0;
         System.out.println(fichier.getAbsolutePath());
         try{
                 
-                FileReader reader = new FileReader(fichier.getAbsolutePath());
-                System.out.println("l");
-                BufferedReader br = new BufferedReader(reader);
+               
+                Scanner sc = new Scanner(new FileInputStream(fichier.getAbsolutePath()));
+                    while (sc.hasNextLine()){
+                        reading = sc.nextLine();
+                        
+                    }
+                contenu = reading.toCharArray();
+                        }
+        catch (FileNotFoundException f) {
+	    	System.out.println("Probleme de fichier avec " + fichier.getName() + f.getMessage());
+        }
+        catch (IOException err) {
+	    	System.out.println("Probleme de lecture : " + err.getMessage());
+        }    
                 
-                contenu = br.readLine().toCharArray();
-
-                while(contenu[i]!='#'){//fichier fini?
+        for(i = 0;i <contenu.length;i++){
+            
+            System.out.println(contenu[i]);
+        }
+              /*  while(contenu.length > 1 && contenu[i]!='#'){//fichier fini?
                     
                     this.partition.add(g, new Morceau());
                         
@@ -124,8 +140,6 @@ public class Partition{
                             if(contenu[i]!='0'){
                             
                                 this.partition.get(g).ajouterNote(new Note(), j);
-                            
-                                System.out.println(contenu[i] + contenu[i+1]);
                                 
                                 switch(contenu[i]){
                                     case 'p':
@@ -166,15 +180,9 @@ public class Partition{
                     
                     
                 }
+        */
                 
-        }
-        catch (FileNotFoundException f) {
-	    	System.out.println("Probleme de fichier avec " + fichier.getName() + f.getMessage());
-        }
-        catch (IOException err) {
-	    	System.out.println("Probleme de lecture : " + err.getMessage());
-        }    
-                
+     
      } 
  /**
  * Reset la partition
