@@ -7,7 +7,7 @@ package piano;
 
 /**
  *Classe permettant de generer des images via un JPanel
- * @author antoine
+ * @author https://openclassrooms.com/forum/sujet/urgent-comment-afficher-une-image-java
  */
 import java.awt.Graphics;
 import java.awt.Image;
