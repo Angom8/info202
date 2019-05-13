@@ -110,7 +110,7 @@ public class Piano extends Game {
         jButton15 = new javax.swing.JButton();//RESET STYLE
 
         /*
-        *Le son se declenche lorsque la touche est relevee, sinon il est parfois cut sans vrai controle.
+        Le son se declenche lorsque la touche est relevee, sinon il est parfois cut sans vrai controle.
         */
         
         
@@ -219,63 +219,43 @@ public class Piano extends Game {
             public void keyReleased(java.awt.event.KeyEvent e) {if (e.getKeyCode()== java.awt.event.KeyEvent.VK_I) {jButton11MouseClicked();}}
             public void keyTyped(java.awt.event.KeyEvent e) {}}
         );     
-        jButton11.setOpaque(false);
-        jButton11.setContentAreaFilled(false);
-        jButton11.setBorderPainted(false);        
+        jButton11.setOpaque(false);jButton11.setContentAreaFilled(false);jButton11.setBorderPainted(false); //Invisible        
         
-
+        //init bouton12 (note 9)
         jButton12.setText("");
         jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton12MouseClicked();
-            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {jButton12MouseClicked();}
         });
-       jButton12.setMnemonic(java.awt.event.KeyEvent.VK_O);
-       jButton12.addKeyListener(new java.awt.event.KeyListener(){
-           
-           
+        jButton12.setMnemonic(java.awt.event.KeyEvent.VK_O);
+        jButton12.addKeyListener(new java.awt.event.KeyListener(){
             public void keyPressed(java.awt.event.KeyEvent e) {}
-
             public void keyReleased(java.awt.event.KeyEvent e) {if (e.getKeyCode()== java.awt.event.KeyEvent.VK_O) {jButton12MouseClicked();}}
-
-            public void keyTyped(java.awt.event.KeyEvent e) {}
-              
-                 }
+            public void keyTyped(java.awt.event.KeyEvent e) {}}
         );    
-       jButton12.setOpaque(false);
-       jButton12.setContentAreaFilled(false);
-       jButton12.setBorderPainted(false);        
+        jButton12.setOpaque(false);jButton12.setContentAreaFilled(false);jButton12.setBorderPainted(false);//Invisible         
         
+        //init bouton13 (note 10)
         jButton13.setText("");
         jButton13.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton13MouseClicked();
-            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {jButton13MouseClicked();}
         });
-       jButton13.setMnemonic(java.awt.event.KeyEvent.VK_P);
-       jButton13.addKeyListener(new java.awt.event.KeyListener(){
-           
-           
+        jButton13.setMnemonic(java.awt.event.KeyEvent.VK_P);
+        jButton13.addKeyListener(new java.awt.event.KeyListener(){
             public void keyPressed(java.awt.event.KeyEvent e) {}
-
             public void keyReleased(java.awt.event.KeyEvent e) {if (e.getKeyCode()== java.awt.event.KeyEvent.VK_P) {jButton13MouseClicked();}}
-
-            public void keyTyped(java.awt.event.KeyEvent e) {}
-              
-                 }
+            public void keyTyped(java.awt.event.KeyEvent e) {}}
         );    
-       jButton13.setOpaque(false);
-       jButton13.setContentAreaFilled(false);
-       jButton13.setBorderPainted(false);
+        jButton13.setOpaque(false);jButton13.setContentAreaFilled(false);jButton13.setBorderPainted(false);//Invisible 
 
+        //import de l'image
         try{
-            
             jPanel2 = new ImagePane(ImageIO.read(new File(System.getProperty("user.dir") + "/src/piano/img/piano.png")));
         }
         catch(IOException e){
             System.out.println("Erreur : "+ e.getMessage());
-}
+        }
         
+        //layout des differents boutons sur le piano
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -327,114 +307,70 @@ public class Piano extends Game {
                 )
         );
 
+        //init de la combobox
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Piano", "Jazz", "BIT", "???" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
+            public void actionPerformed(java.awt.event.ActionEvent evt) {jComboBox1ActionPerformed(evt);}
         });
         
-        jComboBox1.addKeyListener(new java.awt.event.KeyListener(){
-           
-           
-            public void keyPressed(java.awt.event.KeyEvent e) {}
+        jToolBar1.setRollover(true);//aucune idee de ce que ca fait pour etre honnete
 
-            public void keyReleased(java.awt.event.KeyEvent e) {
-                
-                if (e.getKeyCode()== java.awt.event.KeyEvent.VK_1) {
-                    
-                    jComboBox1.setSelectedIndex(0);
-                    NOTE_SELECTED = TypeNote.PIANO;
-                
-                }
-                
-                if (e.getKeyCode()== java.awt.event.KeyEvent.VK_2) {
-                    
-                    jComboBox1.setSelectedIndex(1);
-                    NOTE_SELECTED = TypeNote.JAZZ;
-                
-                }
-                if (e.getKeyCode()== java.awt.event.KeyEvent.VK_3) {
-                    
-                    jComboBox1.setSelectedIndex(2);
-                    NOTE_SELECTED = TypeNote.BIT;
-                
-                }
-                if (e.getKeyCode()== java.awt.event.KeyEvent.VK_4) {
-                    
-                    jComboBox1.setSelectedIndex(3);
-                    NOTE_SELECTED = TypeNote.SECRET;
-                
-                }
-            
-            
-            }
-
-            public void keyTyped(java.awt.event.KeyEvent e) {}
-              
-                 }
-        ); 
-        
-        jToolBar1.setRollover(true);
-
+        //init bouton REC
         jButton1.setText("REC");
         jButton1.setFocusable(false);
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked();
-            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {jButton1MouseClicked();}
         });
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButton1);
 
+        
+        //init bouton STOP
         jButton2.setText("STOP");
         jButton2.setFocusable(false);
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked();
-            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {jButton2MouseClicked();}
         });
         jToolBar1.add(jButton2);
 
+        //init bouton PLAY
         jButton3.setText("PLAY");
         jButton3.setFocusable(false);
         jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked();
-            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {jButton3MouseClicked();}
         });
         jToolBar1.add(jButton3); 
         
+        
+        //init bouton RESET
         jButton14.setText("RESET");
         jButton14.setFocusable(false);
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton14.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton14.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButton14.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton14MouseClicked();
-            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {jButton14MouseClicked();}
         });
         jToolBar1.add(jButton14);
         
+        //init bouton RESET STYLE
         jButton15.setText("RESET STYLE");
         jButton15.setFocusable(false);
         jButton15.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton15.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButton15.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton15MouseClicked();
-            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {jButton15MouseClicked();}
         });
         jToolBar1.add(jButton15);
 
         jToolBar1.add(jComboBox1);
         
+        //layout general
         javax.swing.GroupLayout fenetreLayout = new javax.swing.GroupLayout(fenetre);
         fenetre.setLayout(fenetreLayout);
         fenetreLayout.setHorizontalGroup(
@@ -472,12 +408,19 @@ public class Piano extends Game {
  
     }   
     
+    /*
+    *Methode pour le bouton REC. Active le record et s'autodesactive. Lance le timer
+    */
     private void jButton1MouseClicked() {  
        this.recording = true;
        jButton1.setBackground(new java.awt.Color(255, 0, 0));
        jButton1.setEnabled(false);
        start = OffsetTime.now();
     }                                     
+
+    /*
+    *Methode pour le bouton STOP. Desactive le record et reactive REC.
+    */
     
     private void jButton2MouseClicked() {  
        this.recording = false;
@@ -485,35 +428,42 @@ public class Piano extends Game {
        jButton1.setEnabled(true);
     }  
     
+    /*
+    *Bouton PLAY
+    */
+    
     private void jButton3MouseClicked() {  
         if (this.recording == false){
+            
            jButton3.setBackground(new java.awt.Color(128, 128, 0));
-           jButton1.setEnabled(false);
+           jButton3.setEnabled(false);
+           System.out.println(this.partition.toString());
+           
             try {
            
-           int i;
-           int j = 0;
+                int i;
+                int j = 0;
         
-            while(j<this.partition.getPartition().size()){
+                while(j<this.partition.getPartition().size()){
                
-               for (i = 0; i<this.partition.getPartition().get(j).getMorceau().length;i++){
+                    for (i = 0; i<this.partition.getPartition().get(j).getMorceau().length;i++){
                    
-                   if(this.partition.getPartition().get(j).getMorceau()[i]!=null){
-                    this.partition.getPartition().get(j).getMorceau()[i].jouer();
-                   }
-                   else{
-                       
-                        Thread.sleep(500);
-                   }
-               }
-               j++;
+                        if(this.partition.getPartition().get(j).getMorceau()[i]!=null){
+                            this.partition.getPartition().get(j).getMorceau()[i].jouer();
+                        }
+                        else{Thread.sleep(1000/(MAXTICK/5));}
+                    }
+                j++;
+                }
             }
-            }
-           catch (InterruptedException x) {}
-                jButton1.setBackground(new java.awt.Color(255, 255, 255));
-                 jButton1.setEnabled(true);
-       }
+            catch (InterruptedException x) {jButton3.setBackground(new java.awt.Color(255, 255, 255));jButton3.setEnabled(true);}
+
+        }
     }  
+    
+    /*
+    *Methode pour le bouton RESET
+    */    
     
     private void jButton14MouseClicked() {  
        if (this.recording == false){
@@ -522,7 +472,10 @@ public class Piano extends Game {
            
        }
     } 
-
+    
+    /*
+    *Methode pour le bouton RESET STYLE
+    */   
     private void jButton15MouseClicked() {  
        if (this.recording == false){
            
@@ -530,16 +483,18 @@ public class Piano extends Game {
            
        }
     }     
+
+    /*
+    *Methode pour la selection du type de Note
+    *@param evt l'evenement
+    */   
     
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {                                           
         String selected = (String)jComboBox1.getSelectedItem();
-        
         switch(selected){
-            
             case "Jazz":
                 NOTE_SELECTED = TypeNote.JAZZ;
                 break;
-                     
             case "Piano":
                 NOTE_SELECTED = TypeNote.PIANO;
                 break;
@@ -549,17 +504,17 @@ public class Piano extends Game {
             default:
                 NOTE_SELECTED = TypeNote.SECRET;
                 break;                
-                 
-            
         }
-        
-        
     }   
  
+    /*
+    *Methode pour le bouton NOTE 1
+    */   
+    
     private void jButton4MouseClicked() {   
         
+        //construction de la note sur le fil
         String note = "";
-        
         switch(NOTE_SELECTED){
             case PIANO:
                 note += "p";
@@ -578,638 +533,11 @@ public class Piano extends Game {
                 break;   
         }
         
+        //lecture
         Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+1+".wav").toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
         
-         if (this.recording == true){
-            
-            int diff;
-            int i;
-            OffsetTime now = OffsetTime.now();
-            
-            if (now.getMinute() - this.start.getMinute() > 30|now.getHour() > this.start.getHour()){
-                
-                jButton2MouseClicked();
- 
-            }
-            else
-            {
-                
-                if (now.getMinute() > this.start.getMinute()){
-                
-                    diff = (now.getMinute() - this.start.getMinute())*60 + (now.getSecond() - this.start.getSecond());
- 
-                }
-                else{
-                    
-                    diff = now.getSecond() - this.start.getSecond();
-                    
-                }
-                
-                diff = (int)(diff/2);
-                i = 0;
-                
-                while(diff > (this.partition.getPartition().size())*10){
-                    
-                    this.partition.getPartition().addElement(new Morceau());
-                    diff -= 10;
-                    i ++;
-                    
-                }
-                this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 1), diff);
-  
-            }
-            
-            
-        }      
-        
-    } 
-    
-    private void jButton5MouseClicked() {   
-        
-        String note = "";
-        
-        switch(NOTE_SELECTED){
-            case PIANO:
-                note += "p";
-                break;
-            case BIT:
-                note += "b";
-                break;
-            case JAZZ:
-                note += "j";
-                break;
-            case SECRET:
-                note += "s";
-                break; 
-            default:
-                note += "s";
-                break;   
-        }
-        
-        Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+2+".wav").toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
-        
-         if (this.recording == true){
-            
-            int diff;
-            int i;
-            OffsetTime now = OffsetTime.now();
-            
-            if (now.getMinute() - this.start.getMinute() > 30|now.getHour() > this.start.getHour()){
-                
-                jButton2MouseClicked();
- 
-            }
-            else
-            {
-                
-                if (now.getMinute() > this.start.getMinute()){
-                
-                    diff = (now.getMinute() - this.start.getMinute())*60 + (now.getSecond() - this.start.getSecond());
- 
-                }
-                else{
-                    
-                    diff = now.getSecond() - this.start.getSecond();
-                    
-                }
-                
-                diff = (int)(diff/2);
-                i = 0;
-                
-                while(diff > (this.partition.getPartition().size())*10){
-                    
-                    this.partition.getPartition().addElement(new Morceau());
-                    diff -= 10;
-                    i ++;
-                    
-                }
-                this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 2), diff);
-  
-            }
-            
-            
-        }   
-        
-    }    
-
-    private void jButton6MouseClicked() {   
-        
-        String note = "";
-        
-        switch(NOTE_SELECTED){
-            case PIANO:
-                note += "p";
-                break;
-            case BIT:
-                note += "b";
-                break;
-            case JAZZ:
-                note += "j";
-                break;
-            case SECRET:
-                note += "s";
-                break; 
-            default:
-                note += "s";
-                break;   
-        }
-        
-        Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+3+".wav").toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
-        
-         if (this.recording == true){
-            
-            int diff;
-            int i;
-            OffsetTime now = OffsetTime.now();
-            
-            if (now.getMinute() - this.start.getMinute() > 30|now.getHour() > this.start.getHour()){
-                
-                jButton2MouseClicked();
- 
-            }
-            else
-            {
-                
-                if (now.getMinute() > this.start.getMinute()){
-                
-                    diff = (now.getMinute() - this.start.getMinute())*60 + (now.getSecond() - this.start.getSecond());
- 
-                }
-                else{
-                    
-                    diff = now.getSecond() - this.start.getSecond();
-                    
-                }
-                
-                diff = (int)(diff/2);
-                i = 0;
-                
-                while(diff > (this.partition.getPartition().size())*10){
-                    
-                    this.partition.getPartition().addElement(new Morceau());
-                    diff -= 10;
-                    i ++;
-                    
-                }
-                this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 3), diff);
-  
-            }
-            
-            
-        }      
-        
-    }    
-    
-    private void jButton7MouseClicked() {   
-        
-        String note = "";
-        
-        switch(NOTE_SELECTED){
-            case PIANO:
-                note += "p";
-                break;
-            case BIT:
-                note += "b";
-                break;
-            case JAZZ:
-                note += "j";
-                break;
-            case SECRET:
-                note += "s";
-                break; 
-            default:
-                note += "s";
-                break;   
-        }
-        
-        Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+4+".wav").toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
-        
-         if (this.recording == true){
-            
-            int diff;
-            int i;
-            OffsetTime now = OffsetTime.now();
-            
-            if (now.getMinute() - this.start.getMinute() > 30|now.getHour() > this.start.getHour()){
-                
-                jButton2MouseClicked();
- 
-            }
-            else
-            {
-                
-                if (now.getMinute() > this.start.getMinute()){
-                
-                    diff = (now.getMinute() - this.start.getMinute())*60 + (now.getSecond() - this.start.getSecond());
- 
-                }
-                else{
-                    
-                    diff = now.getSecond() - this.start.getSecond();
-                    
-                }
-                
-                diff = (int)(diff/2);
-                i = 0;
-                
-                while(diff > (this.partition.getPartition().size())*10){
-                    
-                    this.partition.getPartition().addElement(new Morceau());
-                    diff -= 10;
-                    i ++;
-                    
-                }
-                this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 4), diff);
-  
-            }
-            
-            
-        }  
-        
-    }
-    
-    private void jButton8MouseClicked() {   
-        
-        String note = "";
-        
-        switch(NOTE_SELECTED){
-            case PIANO:
-                note += "p";
-                break;
-            case BIT:
-                note += "b";
-                break;
-            case JAZZ:
-                note += "j";
-                break;
-            case SECRET:
-                note += "s";
-                break; 
-            default:
-                note += "s";
-                break;   
-        }
-        
-        Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+5+".wav").toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
-        
-         if (this.recording == true){
-            
-            int diff;
-            int i;
-            OffsetTime now = OffsetTime.now();
-            
-            if (now.getMinute() - this.start.getMinute() > 30|now.getHour() > this.start.getHour()){
-                
-                jButton2MouseClicked();
- 
-            }
-            else
-            {
-                
-                if (now.getMinute() > this.start.getMinute()){
-                
-                    diff = (now.getMinute() - this.start.getMinute())*60 + (now.getSecond() - this.start.getSecond());
- 
-                }
-                else{
-                    
-                    diff = now.getSecond() - this.start.getSecond();
-                    
-                }
-                
-                diff = (int)(diff/2);
-                i = 0;
-                
-                while(diff > (this.partition.getPartition().size())*10){
-                    
-                    this.partition.getPartition().addElement(new Morceau());
-                    diff -= 10;
-                    i ++;
-                    
-                }
-                this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 5), diff);
-  
-            }
-            
-            
-        }     
-        
-    }
-    
-    private void jButton9MouseClicked() {   
-        
-        String note = "";
-        
-        switch(NOTE_SELECTED){
-            case PIANO:
-                note += "p";
-                break;
-            case BIT:
-                note += "b";
-                break;
-            case JAZZ:
-                note += "j";
-                break;
-            case SECRET:
-                note += "s";
-                break; 
-            default:
-                note += "s";
-                break;   
-        }
-        
-        Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+6+".wav").toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
-        
-         if (this.recording == true){
-            
-            int diff;
-            int i;
-            OffsetTime now = OffsetTime.now();
-            
-            if (now.getMinute() - this.start.getMinute() > 30|now.getHour() > this.start.getHour()){
-                
-                jButton2MouseClicked();
- 
-            }
-            else
-            {
-                
-                if (now.getMinute() > this.start.getMinute()){
-                
-                    diff = (now.getMinute() - this.start.getMinute())*60 + (now.getSecond() - this.start.getSecond());
- 
-                }
-                else{
-                    
-                    diff = now.getSecond() - this.start.getSecond();
-                    
-                }
-                
-                diff = (int)(diff/2);
-                i = 0;
-                
-                while(diff > (this.partition.getPartition().size())*10){
-                    
-                    this.partition.getPartition().addElement(new Morceau());
-                    diff -= 10;
-                    i ++;
-                    
-                }
-                this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 6), diff);
-  
-            }
-            
-            
-        }        
-        
-    }
-    
-    private void jButton10MouseClicked() {   
-        
-        String note = "";
-        
-        switch(NOTE_SELECTED){
-            case PIANO:
-                note += "p";
-                break;
-            case BIT:
-                note += "b";
-                break;
-            case JAZZ:
-                note += "j";
-                break;
-            case SECRET:
-                note += "s";
-                break; 
-            default:
-                note += "s";
-                break;   
-        }
-        
-        Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+7+".wav").toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
-        
-         if (this.recording == true){
-            
-            int diff;
-            int i;
-            OffsetTime now = OffsetTime.now();
-            
-            if (now.getMinute() - this.start.getMinute() > 30|now.getHour() > this.start.getHour()){
-                
-                jButton2MouseClicked();
- 
-            }
-            else
-            {
-                
-                if (now.getMinute() > this.start.getMinute()){
-                
-                    diff = (now.getMinute() - this.start.getMinute())*60 + (now.getSecond() - this.start.getSecond());
- 
-                }
-                else{
-                    
-                    diff = now.getSecond() - this.start.getSecond();
-                    
-                }
-                
-                diff = (int)(diff/2);
-                i = 0;
-                
-                while(diff > (this.partition.getPartition().size())*10){
-                    
-                    this.partition.getPartition().addElement(new Morceau());
-                    diff -= 10;
-                    i ++;
-                    
-                }
-                this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 7), diff);
-  
-            }
-            
-            
-        }       
-    }
-    
-    private void jButton11MouseClicked() {   
-        
-        String note = "";
-        
-        switch(NOTE_SELECTED){
-            case PIANO:
-                note += "p";
-                break;
-            case BIT:
-                note += "b";
-                break;
-            case JAZZ:
-                note += "j";
-                break;
-            case SECRET:
-                note += "s";
-                break; 
-            default:
-                note += "s";
-                break;   
-        }
-        
-        Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+8+".wav").toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
-        
-          if (this.recording == true){
-            
-            int diff;
-            int i;
-            OffsetTime now = OffsetTime.now();
-            
-            if (now.getMinute() - this.start.getMinute() > 30|now.getHour() > this.start.getHour()){
-                
-                jButton2MouseClicked();
- 
-            }
-            else
-            {
-                
-                if (now.getMinute() > this.start.getMinute()){
-                
-                    diff = (now.getMinute() - this.start.getMinute())*60 + (now.getSecond() - this.start.getSecond());
- 
-                }
-                else{
-                    
-                    diff = now.getSecond() - this.start.getSecond();
-                    
-                }
-                
-                diff = (int)(diff/2);
-                i = 0;
-                
-                while(diff > (this.partition.getPartition().size())*10){
-                    
-                    this.partition.getPartition().addElement(new Morceau());
-                    diff -= 10;
-                    i ++;
-                    
-                }
-                this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 8), diff);
-  
-            }
-            
-            
-        }
-        
-    }
-
-    private void jButton12MouseClicked() {   
-        
-        String note = "";
-        
-        switch(NOTE_SELECTED){
-            case PIANO:
-                note += "p";
-                break;
-            case BIT:
-                note += "b";
-                break;
-            case JAZZ:
-                note += "j";
-                break;
-            case SECRET:
-                note += "s";
-                break; 
-            default:
-                note += "s";
-                break;   
-        }
-        
-        
-        Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+9+".wav").toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
-        
-         if (this.recording == true){
-            
-            int diff;
-            int i;
-            OffsetTime now = OffsetTime.now();
-            
-            if (now.getMinute() - this.start.getMinute() > 30|now.getHour() > this.start.getHour()){
-                
-                jButton2MouseClicked();
- 
-            }
-            else
-            {
-                
-                if (now.getMinute() > this.start.getMinute()){
-                
-                    diff = (now.getMinute() - this.start.getMinute())*60 + (now.getSecond() - this.start.getSecond());
- 
-                }
-                else{
-                    
-                    diff = now.getSecond() - this.start.getSecond();
-                    
-                }
-                
-                diff = (int)(diff/2);
-                i = 0;
-                
-                while(diff > (this.partition.getPartition().size())*10){
-                    
-                    this.partition.getPartition().addElement(new Morceau());
-                    diff -= 10;
-                    i ++;
-                    
-                }
-                this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 9), diff);
-  
-            }
-            
-            
-        }
-    }
-
-    private void jButton13MouseClicked() {   
-        
-        String note = "";
-        
-        switch(NOTE_SELECTED){
-            case PIANO:
-                note += "p";
-                break;
-            case BIT:
-                note += "b";
-                break;
-            case JAZZ:
-                note += "j";
-                break;
-            case SECRET:
-                note += "s";
-                break; 
-            default:
-                note += "s";
-                break;   
-        }
-        
-        Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+10+".wav").toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
         
         if (this.recording == true){
             
@@ -1218,58 +546,789 @@ public class Piano extends Game {
             OffsetTime now = OffsetTime.now();
             
             if (now.getMinute() - this.start.getMinute() > 30|now.getHour() > this.start.getHour()){
-                
                 jButton2MouseClicked();
- 
             }
             else
             {
-                
                 if (now.getMinute() > this.start.getMinute()){
-                
                     diff = (now.getMinute() - this.start.getMinute())*60 + (now.getSecond() - this.start.getSecond());
- 
                 }
                 else{
-                    
                     diff = now.getSecond() - this.start.getSecond();
-                    
                 }
                 
-                diff = (int)(diff/2);
+                diff = (int)(diff/(MAXTICK/5));
                 i = 0;
                 
-                while(diff > (this.partition.getPartition().size())*10){
-                    
+                while(diff > (this.partition.getPartition().size())*MAXTICK){
                     this.partition.getPartition().addElement(new Morceau());
-                    diff -= 10;
+                    diff -= MAXTICK;
                     i ++;
-                    
                 }
+                float nano = now.getNano() - this.start.getNano();
+                
+                if(nano<0){
+                    nano = 100000000 + nano;
+                }
+                
+                if(nano>750000000){
+                    diff += 3;
+                }
+                if(nano<=750000000&nano>500000000){
+                    diff += 2;
+                }
+                if(nano<=500000000&nano>250000000){
+                    diff +=1;
+                }                
+                
+                
+                this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 1), diff);
+  
+            }
+        }      
+    } 
+    
+    /*
+    *Method pour la note 2
+    */
+    private void jButton5MouseClicked() {   
+        
+        //construction de la note sur le fil
+        String note = "";
+        switch(NOTE_SELECTED){
+            case PIANO:
+                note += "p";
+                break;
+            case BIT:
+                note += "b";
+                break;
+            case JAZZ:
+                note += "j";
+                break;
+            case SECRET:
+                note += "s";
+                break; 
+            default:
+                note += "s";
+                break;   
+        }
+        
+        //lecture
+        Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+2+".wav").toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+        
+        
+        if (this.recording == true){
+            
+            int diff;
+            int i;
+            OffsetTime now = OffsetTime.now();
+            
+            if (now.getMinute() - this.start.getMinute() > 30|now.getHour() > this.start.getHour()){
+                jButton2MouseClicked();
+            }
+            else
+            {
+                if (now.getMinute() > this.start.getMinute()){
+                    diff = (now.getMinute() - this.start.getMinute())*60 + (now.getSecond() - this.start.getSecond());
+                }
+                else{
+                    diff = now.getSecond() - this.start.getSecond();
+                }
+                
+                diff = (int)(diff/(MAXTICK/5));
+                i = 0;
+                
+                while(diff > (this.partition.getPartition().size())*MAXTICK){
+                    this.partition.getPartition().addElement(new Morceau());
+                    diff -= MAXTICK;
+                    i ++;
+                }
+                
+                float nano = now.getNano() - this.start.getNano();
+                
+                if(nano<0){
+                    nano = 100000000 + nano;
+                }
+                
+                if(nano>750000000){
+                    diff += 3;
+                }
+                if(nano<=750000000&nano>500000000){
+                    diff += 2;
+                }
+                if(nano<=500000000&nano>250000000){
+                    diff +=1;
+                }
+   
+                this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 2), diff);
+  
+            }
+        }
+    }    
+
+    /*
+    *Method pour la note 3
+    */
+    private void jButton6MouseClicked() {   
+        
+        //construction de la note sur le fil
+        String note = "";
+        switch(NOTE_SELECTED){
+            case PIANO:
+                note += "p";
+                break;
+            case BIT:
+                note += "b";
+                break;
+            case JAZZ:
+                note += "j";
+                break;
+            case SECRET:
+                note += "s";
+                break; 
+            default:
+                note += "s";
+                break;   
+        }
+        
+        //lecture
+        Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+3+".wav").toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+        
+        
+        if (this.recording == true){
+            
+            int diff;
+            int i;
+            OffsetTime now = OffsetTime.now();
+            
+            if (now.getMinute() - this.start.getMinute() > 30|now.getHour() > this.start.getHour()){
+                jButton2MouseClicked();
+            }
+            else
+            {
+                if (now.getMinute() > this.start.getMinute()){
+                    diff = (now.getMinute() - this.start.getMinute())*60 + (now.getSecond() - this.start.getSecond());
+                }
+                else{
+                    diff = now.getSecond() - this.start.getSecond();
+                }
+                
+                diff = (int)(diff/(MAXTICK/5));
+                i = 0;
+                
+                while(diff > (this.partition.getPartition().size())*MAXTICK){
+                    this.partition.getPartition().addElement(new Morceau());
+                    diff -= MAXTICK;
+                    i ++;
+                }
+                float nano = now.getNano() - this.start.getNano();
+                
+                if(nano<0){
+                    nano = 100000000 + nano;
+                }
+                
+                if(nano>750000000){
+                    diff += 3;
+                }
+                if(nano<=750000000&nano>500000000){
+                    diff += 2;
+                }
+                if(nano<=500000000&nano>250000000){
+                    diff +=1;
+                }               
+                this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 3), diff);
+  
+            }
+        }
+    }    
+    
+    /*
+    *Method pour la note 4
+    */
+    private void jButton7MouseClicked() {   
+        
+        //construction de la note sur le fil
+        String note = "";
+        switch(NOTE_SELECTED){
+            case PIANO:
+                note += "p";
+                break;
+            case BIT:
+                note += "b";
+                break;
+            case JAZZ:
+                note += "j";
+                break;
+            case SECRET:
+                note += "s";
+                break; 
+            default:
+                note += "s";
+                break;   
+        }
+        
+        //lecture
+        Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+4+".wav").toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+        
+        
+        if (this.recording == true){
+            
+            int diff;
+            int i;
+            OffsetTime now = OffsetTime.now();
+            
+            if (now.getMinute() - this.start.getMinute() > 30|now.getHour() > this.start.getHour()){
+                jButton2MouseClicked();
+            }
+            else
+            {
+                if (now.getMinute() > this.start.getMinute()){
+                    diff = (now.getMinute() - this.start.getMinute())*60 + (now.getSecond() - this.start.getSecond());
+                }
+                else{
+                    diff = now.getSecond() - this.start.getSecond();
+                }
+                
+                diff = (int)(diff/(MAXTICK/5));
+                i = 0;
+                
+                while(diff > (this.partition.getPartition().size())*MAXTICK){
+                    this.partition.getPartition().addElement(new Morceau());
+                    diff -= MAXTICK;
+                    i ++;
+                }
+                float nano = now.getNano() - this.start.getNano();
+                
+                if(nano<0){
+                    nano = 100000000 + nano;
+                }
+                
+                if(nano>750000000){
+                    diff += 3;
+                }
+                if(nano<=750000000&nano>500000000){
+                    diff += 2;
+                }
+                if(nano<=500000000&nano>250000000){
+                    diff +=1;
+                }                
+                this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 4), diff);
+  
+            }
+        }
+    }
+    
+    /*
+    *Method pour la note 5
+    */
+    
+    private void jButton8MouseClicked() {   
+        
+        //construction de la note sur le fil
+        String note = "";
+        switch(NOTE_SELECTED){
+            case PIANO:
+                note += "p";
+                break;
+            case BIT:
+                note += "b";
+                break;
+            case JAZZ:
+                note += "j";
+                break;
+            case SECRET:
+                note += "s";
+                break; 
+            default:
+                note += "s";
+                break;   
+        }
+        
+        //lecture
+        Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+5+".wav").toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+        
+        
+        if (this.recording == true){
+            
+            int diff;
+            int i;
+            OffsetTime now = OffsetTime.now();
+            
+            if (now.getMinute() - this.start.getMinute() > 30|now.getHour() > this.start.getHour()){
+                jButton2MouseClicked();
+            }
+            else
+            {
+                if (now.getMinute() > this.start.getMinute()){
+                    diff = (now.getMinute() - this.start.getMinute())*60 + (now.getSecond() - this.start.getSecond());
+                }
+                else{
+                    diff = now.getSecond() - this.start.getSecond();
+                }
+                
+                diff = (int)(diff/(MAXTICK/5));
+                i = 0;
+                
+                while(diff > (this.partition.getPartition().size())*MAXTICK){
+                    this.partition.getPartition().addElement(new Morceau());
+                    diff -= MAXTICK;
+                    i ++;
+                }
+                float nano = now.getNano() - this.start.getNano();
+                
+                if(nano<0){
+                    nano = 100000000 + nano;
+                }
+                
+                if(nano>750000000){
+                    diff += 3;
+                }
+                if(nano<=750000000&nano>500000000){
+                    diff += 2;
+                }
+                if(nano<=500000000&nano>250000000){
+                    diff +=1;
+                }                
+                this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 5), diff);
+  
+            }
+        }
+    }
+    /*
+    *Method pour note 6
+    */
+
+    private void jButton9MouseClicked() {   
+        
+        //construction de la note sur le fil
+        String note = "";
+        switch(NOTE_SELECTED){
+            case PIANO:
+                note += "p";
+                break;
+            case BIT:
+                note += "b";
+                break;
+            case JAZZ:
+                note += "j";
+                break;
+            case SECRET:
+                note += "s";
+                break; 
+            default:
+                note += "s";
+                break;   
+        }
+        
+        //lecture
+        Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+6+".wav").toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+        
+        
+        if (this.recording == true){
+            
+            int diff;
+            int i;
+            OffsetTime now = OffsetTime.now();
+            
+            if (now.getMinute() - this.start.getMinute() > 30|now.getHour() > this.start.getHour()){
+                jButton2MouseClicked();
+            }
+            else
+            {
+                if (now.getMinute() > this.start.getMinute()){
+                    diff = (now.getMinute() - this.start.getMinute())*60 + (now.getSecond() - this.start.getSecond());
+                }
+                else{
+                    diff = now.getSecond() - this.start.getSecond();
+                }
+                
+                diff = (int)(diff/(MAXTICK/5));
+                i = 0;
+                
+                while(diff > (this.partition.getPartition().size())*MAXTICK){
+                    this.partition.getPartition().addElement(new Morceau());
+                    diff -= MAXTICK;
+                    i ++;
+                }
+                float nano = now.getNano() - this.start.getNano();
+                
+                if(nano<0){
+                    nano = 100000000 + nano;
+                }
+                
+                if(nano>750000000){
+                    diff += 3;
+                }
+                if(nano<=750000000&nano>500000000){
+                    diff += 2;
+                }
+                if(nano<=500000000&nano>250000000){
+                    diff +=1;
+                }                
+                this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 6), diff);
+  
+            }
+        } 
+    }
+    /*
+    *Method pour la note 7
+    */
+    private void jButton10MouseClicked() {   
+        
+        //construction de la note sur le fil
+        String note = "";
+        switch(NOTE_SELECTED){
+            case PIANO:
+                note += "p";
+                break;
+            case BIT:
+                note += "b";
+                break;
+            case JAZZ:
+                note += "j";
+                break;
+            case SECRET:
+                note += "s";
+                break; 
+            default:
+                note += "s";
+                break;   
+        }
+        
+        //lecture
+        Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+7+".wav").toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+        
+        
+        if (this.recording == true){
+            
+            int diff;
+            int i;
+            OffsetTime now = OffsetTime.now();
+            
+            if (now.getMinute() - this.start.getMinute() > 30|now.getHour() > this.start.getHour()){
+                jButton2MouseClicked();
+            }
+            else
+            {
+                if (now.getMinute() > this.start.getMinute()){
+                    diff = (now.getMinute() - this.start.getMinute())*60 + (now.getSecond() - this.start.getSecond());
+                }
+                else{
+                    diff = now.getSecond() - this.start.getSecond();
+                }
+                
+                diff = (int)(diff/(MAXTICK/5));
+                i = 0;
+                
+                while(diff > (this.partition.getPartition().size())*MAXTICK){
+                    this.partition.getPartition().addElement(new Morceau());
+                    diff -= MAXTICK;
+                    i ++;
+                }
+                float nano = now.getNano() - this.start.getNano();
+                
+                if(nano<0){
+                    nano = 100000000 + nano;
+                }
+                
+                if(nano>750000000){
+                    diff += 3;
+                }
+                if(nano<=750000000&nano>500000000){
+                    diff += 2;
+                }
+                if(nano<=500000000&nano>250000000){
+                    diff +=1;
+                }                
+                this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 7), diff);
+  
+            }
+        }     
+    }
+    
+    /*
+    *Method pour la note 8
+    */
+    
+    private void jButton11MouseClicked() {   
+        
+        //construction de la note sur le fil
+        String note = "";
+        switch(NOTE_SELECTED){
+            case PIANO:
+                note += "p";
+                break;
+            case BIT:
+                note += "b";
+                break;
+            case JAZZ:
+                note += "j";
+                break;
+            case SECRET:
+                note += "s";
+                break; 
+            default:
+                note += "s";
+                break;   
+        }
+        
+        //lecture
+        Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+8+".wav").toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+        
+        
+        if (this.recording == true){
+            
+            int diff;
+            int i;
+            OffsetTime now = OffsetTime.now();
+            
+            if (now.getMinute() - this.start.getMinute() > 30|now.getHour() > this.start.getHour()){
+                jButton2MouseClicked();
+            }
+            else
+            {
+                if (now.getMinute() > this.start.getMinute()){
+                    diff = (now.getMinute() - this.start.getMinute())*60 + (now.getSecond() - this.start.getSecond());
+                }
+                else{
+                    diff = now.getSecond() - this.start.getSecond();
+                }
+                
+                diff = (int)(diff/(MAXTICK/5));
+                i = 0;
+                
+                while(diff > (this.partition.getPartition().size())*MAXTICK){
+                    this.partition.getPartition().addElement(new Morceau());
+                    diff -= MAXTICK;
+                    i ++;
+                }
+                float nano = now.getNano() - this.start.getNano();
+                
+                if(nano<0){
+                    nano = 100000000 + nano;
+                }
+                
+                if(nano>750000000){
+                    diff += 3;
+                }
+                if(nano<=750000000&nano>500000000){
+                    diff += 2;
+                }
+                if(nano<=500000000&nano>250000000){
+                    diff +=1;
+                }                
+                this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 8), diff);
+  
+            }
+        }
+    }
+
+    /*
+    *Method pour note 9
+    */
+    
+    
+    private void jButton12MouseClicked() {   
+        
+        //construction de la note sur le fil
+        String note = "";
+        switch(NOTE_SELECTED){
+            case PIANO:
+                note += "p";
+                break;
+            case BIT:
+                note += "b";
+                break;
+            case JAZZ:
+                note += "j";
+                break;
+            case SECRET:
+                note += "s";
+                break; 
+            default:
+                note += "s";
+                break;   
+        }
+        
+        //lecture
+        Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+9+".wav").toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+        
+        
+        if (this.recording == true){
+            
+            int diff;
+            int i;
+            OffsetTime now = OffsetTime.now();
+            
+            if (now.getMinute() - this.start.getMinute() > 30|now.getHour() > this.start.getHour()){
+                jButton2MouseClicked();
+            }
+            else
+            {
+                if (now.getMinute() > this.start.getMinute()){
+                    diff = (now.getMinute() - this.start.getMinute())*60 + (now.getSecond() - this.start.getSecond());
+                }
+                else{
+                    diff = now.getSecond() - this.start.getSecond();
+                }
+                
+                diff = (int)(diff/(MAXTICK/5));
+                i = 0;
+                
+                while(diff > (this.partition.getPartition().size())*MAXTICK){
+                    this.partition.getPartition().addElement(new Morceau());
+                    diff -= MAXTICK;
+                    i ++;
+                }
+                float nano = now.getNano() - this.start.getNano();
+                
+                if(nano<0){
+                    nano = 100000000 + nano;
+                }
+                
+                if(nano>750000000){
+                    diff += 3;
+                }
+                if(nano<=750000000&nano>500000000){
+                    diff += 2;
+                }
+                if(nano<=500000000&nano>250000000){
+                    diff +=1;
+                }                
+                this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 9), diff);
+  
+            }
+        }
+    }
+
+    /*
+    *Method pour la note 10
+    */
+    
+    
+    private void jButton13MouseClicked() {   
+        
+        //construction de la note sur le fil
+        String note = "";
+        switch(NOTE_SELECTED){
+            case PIANO:
+                note += "p";
+                break;
+            case BIT:
+                note += "b";
+                break;
+            case JAZZ:
+                note += "j";
+                break;
+            case SECRET:
+                note += "s";
+                break; 
+            default:
+                note += "s";
+                break;   
+        }
+        
+        //lecture
+        Media sound = new Media(new File(System.getProperty("user.dir") + "/src/piano/notes/"+note+"/"+10+".wav").toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+        
+        
+        if (this.recording == true){
+            
+            int diff;
+            int i;
+            OffsetTime now = OffsetTime.now();
+            
+            if (now.getMinute() - this.start.getMinute() > 30|now.getHour() > this.start.getHour()){
+                jButton2MouseClicked();
+            }
+            else
+            {
+                if (now.getMinute() > this.start.getMinute()){
+                    diff = (now.getMinute() - this.start.getMinute())*60 + (now.getSecond() - this.start.getSecond());
+                }
+                else{
+                    diff = now.getSecond() - this.start.getSecond();
+                }
+                
+                diff = (int)(diff/(MAXTICK/5));
+                i = 0;
+                
+                while(diff > (this.partition.getPartition().size())*MAXTICK){
+                    this.partition.getPartition().addElement(new Morceau());
+                    diff -= MAXTICK;
+                    i ++;
+                }
+                float nano = now.getNano() - this.start.getNano();
+                
+                if(nano<0){
+                    nano = 100000000 + nano;
+                }
+                
+                if(nano>750000000){
+                    diff += 3;
+                }
+                if(nano<=750000000&nano>500000000){
+                    diff += 2;
+                }
+                if(nano<=500000000&nano>250000000){
+                    diff +=1;
+                }                
                 this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 10), diff);
   
             }
-            
         }
-        
-        
     }     
 
-
-
-
+    /*
+    *Sauvegarder la partition
+    *@param f fichier de destination
+    */
     public void saveGame(File f){partition.savePartition(f);}
+    /*
+    *Charger une partition
+    *@param f fichier source
+    */
     public void loadGame(File f){ partition.loadPartition(f);}
+    /*
+    *Commencer le jeu
+    *Redirige vers REC
+    */
     public  void startGame(){jButton1MouseClicked();}
+    /*
+    *Arreter le jeu
+    *Redirige vers STOP
+    */
     public  void stopGame(){jButton2MouseClicked();}
-    public void pauseGame(){}
-//start, stop and pause are useless since the Piano is not a "true" game;//useless since the Piano is not a "true" game
+    public void pauseGame(){}//unused
     
+    /*
+    *Obtenir le nom du jeu
+    *@return le nom du jeu
+    */
     public String getName()
     {
         return super.getName();
     }
     
+    //declarations
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -1288,8 +1347,7 @@ public class Piano extends Game {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JToolBar jToolBar1;
-    
-    
+
 }    
 
 
