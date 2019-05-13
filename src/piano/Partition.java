@@ -107,7 +107,7 @@ public class Partition{
         System.out.println(fichier.getAbsolutePath());
         try{
                 
-                FileReader reader = new FileReader(fichier);
+                FileReader reader = new FileReader(fichier.getAbsolutePath());
                 System.out.println("l");
                 BufferedReader br = new BufferedReader(reader);
                 

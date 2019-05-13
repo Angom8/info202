@@ -327,7 +327,6 @@ public class Piano extends Game {
 
         try{
             
-            System.out.println(System.getProperty("user.dir") + "/src/piano/img/piano.png");
             jPanel2 = new ImagePane(ImageIO.read(new File(System.getProperty("user.dir") + "/src/piano/img/piano.png")));
         }
         catch(IOException e){
