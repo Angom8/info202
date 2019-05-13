@@ -29,7 +29,28 @@ public class Note {
     public Note(TypeNote t, int f){
         
         this.type = t;
-        this.ul = System.getProperty("user.dir") + "/src/piano/notes/"+type+"/"+freq+".wav";
+        
+        String retour = "";
+        
+        switch(this.type){
+            case PIANO:
+                retour += "p";
+                break;
+            case BIT:
+                retour += "b";
+                break;
+            case JAZZ:
+                retour += "j";
+                break;
+            case SECRET:
+                retour += "s";
+                break; 
+            default:
+                retour += "s";
+                break;           
+        }
+        
+        this.ul = System.getProperty("user.dir") + "/src/piano/notes/"+retour+"/"+freq+".wav";
         this.freq = f;
         this.son = new Media(new File(ul).toURI().toString());
         
@@ -70,7 +91,27 @@ public class Note {
  **/       
     public void setURL(){
 
-        this.ul = System.getProperty("user.dir") + "/src/piano/notes/"+type+"/"+freq+".wav";
+        
+        String retour = "";
+        
+        switch(this.type){
+            case PIANO:
+                retour += "p";
+                break;
+            case BIT:
+                retour += "b";
+                break;
+            case JAZZ:
+                retour += "j";
+                break;
+            case SECRET:
+                retour += "s";
+                break; 
+            default:
+                retour += "s";
+                break;           
+        }
+        this.ul = System.getProperty("user.dir") + "/src/piano/notes/"+retour+"/"+freq+".wav";
 
     }
          /**
@@ -138,8 +179,7 @@ public class Note {
  **/    
     public void jouer() {
         final JFXPanel fxPanel = new JFXPanel();
-        Media sound = new Media(new File(this.ul).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        MediaPlayer mediaPlayer = new MediaPlayer(son);
         mediaPlayer.play();
     }
     

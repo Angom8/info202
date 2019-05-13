@@ -113,12 +113,10 @@ public class Partition{
                 while(contenu[i]!='#'){//fichier fini?
                     
                     this.partition.add(g, new Morceau());
-                    
-                    while(contenu[i]!='|'){//nouveau morceau ?
                         
                         j = 0;
                         
-                        while(contenu[i]!='|'){//nouvelle ligne de tableau ?
+                        while(contenu[i]!='|'){//nouveau morceau
                             
                             if(contenu[i]!='0'){
                             
@@ -154,9 +152,6 @@ public class Partition{
                                 i += 2;
                             }
                             j++;
-                        }
-                        
-                        i++;
                         
                     }
                     this.partition.get(g).nouvelleDuree();
