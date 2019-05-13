@@ -1311,16 +1311,7 @@ public class Piano extends Game {
     public void saveGame(File f){}
     public void saveGame(){
 
-        filtreFichier filtre = new filtreFichier();
-        JFileChooser choix = new JFileChooser();
-        choix.addChoosableFileFilter(filtre);
-        choix.setCurrentDirectory(new java.io.File("/"));
-        int retour=choix.showOpenDialog(this.parent);
-        if(retour==JFileChooser.APPROVE_OPTION){
-            partition.loadPartition(choix.getSelectedFile());
-        }
-        else {} ;// pas de fichier choisi
-       
+           
     }
     
      /**
@@ -1329,16 +1320,8 @@ public class Piano extends Game {
      */
     public void loadGame(File f){}
     public void loadGame(){
-        
-        filtreFichier filtre = new filtreFichier();
-        JFileChooser choix = new JFileChooser();
-        choix.addChoosableFileFilter(filtre);
-        choix.setCurrentDirectory(new java.io.File("/"));
-        int retour=choix.showOpenDialog(this.parent);
-        if(retour==JFileChooser.APPROVE_OPTION){
-            partition.loadPartition(choix.getSelectedFile());
-        }
-        else {} ;// pas de fichier choisi
+    System.out.println((new File(System.getProperty("user.dir") + "/src/piano/partitions/", "test.text")).getAbsolutePath())  ;  
+    partition.loadPartition(new File(System.getProperty("user.dir") + "/src/piano/partitions/", "test.text"));
         
     }
     

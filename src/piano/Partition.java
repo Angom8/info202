@@ -104,12 +104,15 @@ public class Partition{
         int i = 0; 
         int j;
         int g = 0;
-        
+        System.out.println(fichier.getAbsolutePath());
         try{
-	    	BufferedReader in = new BufferedReader(new FileReader(fichier));
-                contenu = in.readLine().toCharArray();
-	    	in.close();
                 
+                FileReader reader = new FileReader(fichier);
+                System.out.println("l");
+                BufferedReader br = new BufferedReader(reader);
+                
+                contenu = br.readLine().toCharArray();
+
                 while(contenu[i]!='#'){//fichier fini?
                     
                     this.partition.add(g, new Morceau());
@@ -122,6 +125,8 @@ public class Partition{
                             
                                 this.partition.get(g).ajouterNote(new Note(), j);
                             
+                                System.out.println(contenu[i] + contenu[i+1]);
+                                
                                 switch(contenu[i]){
                                     case 'p':
                                       this.partition.get(g).getNote(j).setType(TypeNote.PIANO);
@@ -162,16 +167,14 @@ public class Partition{
                     
                 }
                 
-            in.close();
-            
         }
         catch (FileNotFoundException f) {
 	    	System.out.println("Probleme de fichier avec " + fichier.getName());
         }
         catch (IOException err) {
 	    	System.out.println("Probleme de lecture : " + err.getMessage());
-        }
-        
+        }    
+                
      } 
  /**
  * Reset la partition
