@@ -2,6 +2,8 @@
 
 VERSION JAVA SE / FX : 12
 
+VERSION Netbeans : 10
+
 Ce piano permet :
 
 - de jouer des notes parmi 4 styles
