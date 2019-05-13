@@ -36,15 +36,17 @@ import java.time.OffsetTime;
  */
 public class Piano extends Game {
     
-    private Container parent;
-    private Partition partition;
-    private JPanel fenetre;
-    private TypeNote NOTE_SELECTED;
-    private boolean recording;
-    private OffsetTime start = null;
-    public final JFXPanel fxPanel = new JFXPanel();
+    private Container parent;//Si on le lance par un launcher
+    private Partition partition;//LA partition
+    private JPanel fenetre;//fenetre de jeu
+    private TypeNote NOTE_SELECTED;//type de note en cours (par defaut le piano)
+    private boolean recording;//en train de record ?
+    private OffsetTime start = null;//pour le record, temps de debut de record
+    public final JFXPanel fxPanel = new JFXPanel();//necessaire pour init les sons
+    final int MAXTICK = 20;//nombre de notes pour 5 secondes, soit ici 4 par seconde
     /**
-     * Creates new form InterfacePiano
+     * Initialisation du piano
+     * @param parent le Container
      */
     public Piano(Container parent) {
         super("Piano");
@@ -57,7 +59,9 @@ public class Piano extends Game {
         initComponents();
 
     }
-    
+     /**
+     * Lancement du piano hors Run ou Launcher
+     */
     public Piano() {
         super("Piano");
         JFrame temp = new JFrame();
@@ -73,17 +77,25 @@ public class Piano extends Game {
         
         
     }
-    
-    @SuppressWarnings("unchecked")                       
+
+     /**
+     * Gestion de l'affichage Swing/FX. Le tout fait a la main car Netbeans est *un peu* pas pratique
+     */    
     private void initComponents() {
         
-        jPanel2 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jToolBar1 = new javax.swing.JToolBar();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        
+        //declarations
+        jPanel2 = new javax.swing.JPanel();//image du piano
+        
+        jComboBox1 = new javax.swing.JComboBox<>();//choix du type de Note
+        
+        jToolBar1 = new javax.swing.JToolBar();//toolbar
+        
+        jButton1 = new javax.swing.JButton();//REC
+        jButton2 = new javax.swing.JButton();//STOP
+        jButton3 = new javax.swing.JButton();//PLAY
+        
+        jButton4 = new javax.swing.JButton();//4 = note 1, 13 = note 10
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
@@ -93,191 +105,123 @@ public class Piano extends Game {
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
+         
+        jButton14 = new javax.swing.JButton();//RESET
+        jButton15 = new javax.swing.JButton();//RESET STYLE
 
+        /*
+        *Le son se declenche lorsque la touche est relevee, sinon il est parfois cut sans vrai controle.
+        */
+        
+        
+        //init bouton4 (note 1)
         jButton4.setText("");
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton4MouseClicked();
-            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {jButton4MouseClicked();}
         });
-       jButton4.setMnemonic(java.awt.event.KeyEvent.VK_A);
-       jButton4.addKeyListener(new java.awt.event.KeyListener(){
-           
-           
+        jButton4.setMnemonic(java.awt.event.KeyEvent.VK_A);
+        jButton4.addKeyListener(new java.awt.event.KeyListener(){
             public void keyPressed(java.awt.event.KeyEvent e) {}
-
             public void keyReleased(java.awt.event.KeyEvent e) {if (e.getKeyCode()== java.awt.event.KeyEvent.VK_A) {jButton4MouseClicked();}}
-
-            public void keyTyped(java.awt.event.KeyEvent e) {}
-              
-                 }
-          );
-       jButton4.setOpaque(false);
-       jButton4.setContentAreaFilled(false);
-       jButton4.setBorderPainted(false);
+            public void keyTyped(java.awt.event.KeyEvent e) {}}
+        );
+        jButton4.setOpaque(false);jButton4.setContentAreaFilled(false);jButton4.setBorderPainted(false);//Invisible
        
-       
+        
+        //init bouton5 (note 2)
         jButton5.setText("");
         jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton5MouseClicked();
-            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {jButton5MouseClicked();}
         });
-       jButton5.setMnemonic(java.awt.event.KeyEvent.VK_Z);
-       jButton5.addKeyListener(new java.awt.event.KeyListener(){
-           
-           
+        jButton5.setMnemonic(java.awt.event.KeyEvent.VK_Z);
+        jButton5.addKeyListener(new java.awt.event.KeyListener(){
             public void keyPressed(java.awt.event.KeyEvent e) {}
-
             public void keyReleased(java.awt.event.KeyEvent e) {if (e.getKeyCode()== java.awt.event.KeyEvent.VK_Z) {jButton5MouseClicked();}}
-
-            public void keyTyped(java.awt.event.KeyEvent e) {}
-              
-                 }
+            public void keyTyped(java.awt.event.KeyEvent e) {}}
         );
-       jButton5.setOpaque(false);
-       jButton5.setContentAreaFilled(false);
-       jButton5.setBorderPainted(false);
+        jButton5.setOpaque(false);jButton5.setContentAreaFilled(false);jButton5.setBorderPainted(false);//Invisible
        
+        //init bouton6 (note 3)
         jButton6.setText("");
         jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton6MouseClicked();
-            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {jButton6MouseClicked();}
         });
-       jButton6.setMnemonic(java.awt.event.KeyEvent.VK_E);
-       jButton6.addKeyListener(new java.awt.event.KeyListener(){
-           
-           
+        jButton6.setMnemonic(java.awt.event.KeyEvent.VK_E);
+        jButton6.addKeyListener(new java.awt.event.KeyListener(){
             public void keyPressed(java.awt.event.KeyEvent e) {}
-
             public void keyReleased(java.awt.event.KeyEvent e) {if (e.getKeyCode()== java.awt.event.KeyEvent.VK_E) {jButton6MouseClicked();}}
-
-            public void keyTyped(java.awt.event.KeyEvent e) {}
-              
-                 }
+            public void keyTyped(java.awt.event.KeyEvent e) {}}
         );
-       jButton6.setOpaque(false);
-       jButton6.setContentAreaFilled(false);
-       jButton6.setBorderPainted(false);        
-       
-       
+        jButton6.setOpaque(false);jButton6.setContentAreaFilled(false);jButton6.setBorderPainted(false);//Invisible        
+
         
-        jButton8.setText("");
-        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton8MouseClicked();
-            }
-        });
-       jButton8.setMnemonic(java.awt.event.KeyEvent.VK_T);
-       jButton8.addKeyListener(new java.awt.event.KeyListener(){
-           
-           
-            public void keyPressed(java.awt.event.KeyEvent e) {}
-
-            public void keyReleased(java.awt.event.KeyEvent e) {if (e.getKeyCode()== java.awt.event.KeyEvent.VK_T) {jButton8MouseClicked();}}
-
-            public void keyTyped(java.awt.event.KeyEvent e) {}
-              
-                 }
-        );       
-       jButton8.setOpaque(false);
-       jButton8.setContentAreaFilled(false);
-       jButton8.setBorderPainted(false);        
-        
-
+        //init bouton7 (note 4)  
         jButton7.setText("");
         jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
-        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton7MouseClicked();
-            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {jButton7MouseClicked();}
         });
-       jButton7.setMnemonic(java.awt.event.KeyEvent.VK_R);
-       jButton7.addKeyListener(new java.awt.event.KeyListener(){
-           
-           
+        jButton7.setMnemonic(java.awt.event.KeyEvent.VK_R);
+        jButton7.addKeyListener(new java.awt.event.KeyListener(){
             public void keyPressed(java.awt.event.KeyEvent e) {}
-
             public void keyReleased(java.awt.event.KeyEvent e) {if (e.getKeyCode()== java.awt.event.KeyEvent.VK_R) {jButton7MouseClicked();}}
-
-            public void keyTyped(java.awt.event.KeyEvent e) {}
-              
-                 }
+            public void keyTyped(java.awt.event.KeyEvent e) {}}
         );
-       jButton7.setOpaque(false);
-       jButton7.setContentAreaFilled(false);
-       jButton7.setBorderPainted(false);
+        jButton7.setOpaque(false);jButton7.setContentAreaFilled(false);jButton7.setBorderPainted(false);//Invisible   
        
+        //init bouton8 (note 5)
+        jButton8.setText("");
+        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {jButton8MouseClicked();}
+        });
+        jButton8.setMnemonic(java.awt.event.KeyEvent.VK_T);
+        jButton8.addKeyListener(new java.awt.event.KeyListener(){
+            public void keyPressed(java.awt.event.KeyEvent e) {}
+            public void keyReleased(java.awt.event.KeyEvent e) {if (e.getKeyCode()== java.awt.event.KeyEvent.VK_T) {jButton8MouseClicked();}}
+            public void keyTyped(java.awt.event.KeyEvent e) {}}
+        );       
+        jButton8.setOpaque(false);jButton8.setContentAreaFilled(false);jButton8.setBorderPainted(false);//Invisible         
        
-       
+        //init bouton 9 (note 6)
         jButton9.setText("");
         jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton9MouseClicked();
-            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {jButton9MouseClicked();}
         });
-       jButton9.setMnemonic(java.awt.event.KeyEvent.VK_Y);
-       jButton9.addKeyListener(new java.awt.event.KeyListener(){
-           
-           
+        jButton9.setMnemonic(java.awt.event.KeyEvent.VK_Y);
+        jButton9.addKeyListener(new java.awt.event.KeyListener(){
             public void keyPressed(java.awt.event.KeyEvent e) {}
-
             public void keyReleased(java.awt.event.KeyEvent e) {if (e.getKeyCode()== java.awt.event.KeyEvent.VK_Y) {jButton9MouseClicked();}}
-
-            public void keyTyped(java.awt.event.KeyEvent e) {}
-              
-                 }
+            public void keyTyped(java.awt.event.KeyEvent e) {}}
         );
-       jButton9.setOpaque(false);
-       jButton9.setContentAreaFilled(false);
-       jButton9.setBorderPainted(false);        
+        jButton9.setOpaque(false);jButton9.setContentAreaFilled(false);jButton9.setBorderPainted(false);//Invisible          
         
         
+        //init bouton 10 (note 7)
         jButton10.setText("");
         jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton10MouseClicked();
-            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {jButton10MouseClicked();}
         });
-       jButton10.setMnemonic(java.awt.event.KeyEvent.VK_U);
-       jButton10.addKeyListener(new java.awt.event.KeyListener(){
-           
-           
+        jButton10.setMnemonic(java.awt.event.KeyEvent.VK_U);
+        jButton10.addKeyListener(new java.awt.event.KeyListener(){
             public void keyPressed(java.awt.event.KeyEvent e) {}
-
             public void keyReleased(java.awt.event.KeyEvent e) {if (e.getKeyCode()== java.awt.event.KeyEvent.VK_U) {jButton10MouseClicked();}}
-
-            public void keyTyped(java.awt.event.KeyEvent e) {}
-              
-                 }
+            public void keyTyped(java.awt.event.KeyEvent e) {}}
         );        
-       jButton10.setOpaque(false);
-       jButton10.setContentAreaFilled(false);
-       jButton10.setBorderPainted(false);            
+        jButton10.setOpaque(false); jButton10.setContentAreaFilled(false); jButton10.setBorderPainted(false);   //Invisible            
         
+        //init bouton11 (note 8)
         jButton11.setText("");
         jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton11MouseClicked();
-            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {jButton11MouseClicked();}
         });
-       jButton11.setMnemonic(java.awt.event.KeyEvent.VK_I);
-       jButton11.addKeyListener(new java.awt.event.KeyListener(){
-           
-           
+        jButton11.setMnemonic(java.awt.event.KeyEvent.VK_I);
+        jButton11.addKeyListener(new java.awt.event.KeyListener(){
             public void keyPressed(java.awt.event.KeyEvent e) {}
-
             public void keyReleased(java.awt.event.KeyEvent e) {if (e.getKeyCode()== java.awt.event.KeyEvent.VK_I) {jButton11MouseClicked();}}
-
-            public void keyTyped(java.awt.event.KeyEvent e) {}
-              
-                 }
+            public void keyTyped(java.awt.event.KeyEvent e) {}}
         );     
-       jButton11.setOpaque(false);
-       jButton11.setContentAreaFilled(false);
-       jButton11.setBorderPainted(false);        
+        jButton11.setOpaque(false);
+        jButton11.setContentAreaFilled(false);
+        jButton11.setBorderPainted(false);        
         
 
         jButton12.setText("");
