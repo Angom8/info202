@@ -95,7 +95,6 @@ public class Piano extends Game {
         jButton13 = new javax.swing.JButton();
         jButton14 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
-        javax.swing.JButton test = new javax.swing.JButton();
 
         jButton4.setText("");
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -460,21 +459,16 @@ public class Piano extends Game {
         jButton3.setFocusable(false);
         jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton3);
-        
-        test.setText("TEST");
-        test.setFocusable(false);
-        test.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        test.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(test);
-        test.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                testClicked();
+                jButton3MouseClicked();
             }
         });
+        jToolBar1.add(jButton3); 
         
         jButton14.setText("RESET");
         jButton14.setFocusable(false);
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton14.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton14.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButton14.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -540,17 +534,41 @@ public class Piano extends Game {
        jButton1.setEnabled(false);
        start = OffsetTime.now();
     }                                     
-
-    //will be deleted once the projet is finished
-    private void testClicked() {  
-       loadGame();
-       System.out.println(this.partition);
-    }   
     
     private void jButton2MouseClicked() {  
        this.recording = false;
        jButton1.setBackground(new java.awt.Color(255, 255, 255));
        jButton1.setEnabled(true);
+    }  
+    
+    private void jButton3MouseClicked() {  
+        if (this.recording == false){
+           jButton3.setBackground(new java.awt.Color(128, 128, 0));
+           jButton1.setEnabled(false);
+            try {
+           
+           int i;
+           int j = 0;
+        
+            while(j<this.partition.getPartition().size()){
+               
+               for (i = 0; i<this.partition.getPartition().get(j).getMorceau().length;i++){
+                   
+                   if(this.partition.getPartition().get(j).getMorceau()[i]!=null){
+                    this.partition.getPartition().get(j).getMorceau()[i].jouer();
+                   }
+                   else{
+                       
+                        Thread.sleep(500);
+                   }
+               }
+               j++;
+            }
+            }
+           catch (InterruptedException x) {}
+                jButton1.setBackground(new java.awt.Color(255, 255, 255));
+                 jButton1.setEnabled(true);
+       }
     }  
     
     private void jButton14MouseClicked() {  
@@ -620,7 +638,7 @@ public class Piano extends Game {
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
         
-        if (this.recording == true){
+         if (this.recording == true){
             
             int diff;
             int i;
@@ -645,23 +663,22 @@ public class Piano extends Game {
                     
                 }
                 
-                diff = diff/10;
+                diff = (int)(diff/2);
                 i = 0;
                 
-                while(diff > (this.partition.getPartition().size()-1)*50){
+                while(diff > (this.partition.getPartition().size())*10){
                     
                     this.partition.getPartition().addElement(new Morceau());
-                    diff -= 50;
+                    diff -= 10;
                     i ++;
                     
                 }
-                
                 this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 1), diff);
   
             }
             
             
-        }        
+        }      
         
     } 
     
@@ -691,7 +708,7 @@ public class Piano extends Game {
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
         
-        if (this.recording == true){
+         if (this.recording == true){
             
             int diff;
             int i;
@@ -716,23 +733,22 @@ public class Piano extends Game {
                     
                 }
                 
-                diff = diff/10;
+                diff = (int)(diff/2);
                 i = 0;
                 
-                while(diff > (this.partition.getPartition().size()-1)*50){
+                while(diff > (this.partition.getPartition().size())*10){
                     
                     this.partition.getPartition().addElement(new Morceau());
-                    diff -= 50;
+                    diff -= 10;
                     i ++;
                     
                 }
-                
                 this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 2), diff);
   
             }
             
             
-        }        
+        }   
         
     }    
 
@@ -762,7 +778,7 @@ public class Piano extends Game {
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
         
-        if (this.recording == true){
+         if (this.recording == true){
             
             int diff;
             int i;
@@ -787,23 +803,22 @@ public class Piano extends Game {
                     
                 }
                 
-                diff = diff/10;
+                diff = (int)(diff/2);
                 i = 0;
                 
-                while(diff > (this.partition.getPartition().size()-1)*50){
+                while(diff > (this.partition.getPartition().size())*10){
                     
                     this.partition.getPartition().addElement(new Morceau());
-                    diff -= 50;
+                    diff -= 10;
                     i ++;
                     
                 }
-                
                 this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 3), diff);
   
             }
             
             
-        }        
+        }      
         
     }    
     
@@ -833,7 +848,7 @@ public class Piano extends Game {
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
         
-        if (this.recording == true){
+         if (this.recording == true){
             
             int diff;
             int i;
@@ -858,23 +873,22 @@ public class Piano extends Game {
                     
                 }
                 
-                diff = diff/10;
+                diff = (int)(diff/2);
                 i = 0;
                 
-                while(diff > (this.partition.getPartition().size()-1)*50){
+                while(diff > (this.partition.getPartition().size())*10){
                     
                     this.partition.getPartition().addElement(new Morceau());
-                    diff -= 50;
+                    diff -= 10;
                     i ++;
                     
                 }
-                
                 this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 4), diff);
   
             }
             
             
-        }        
+        }  
         
     }
     
@@ -904,7 +918,7 @@ public class Piano extends Game {
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
         
-        if (this.recording == true){
+         if (this.recording == true){
             
             int diff;
             int i;
@@ -929,23 +943,22 @@ public class Piano extends Game {
                     
                 }
                 
-                diff = diff/10;
+                diff = (int)(diff/2);
                 i = 0;
                 
-                while(diff > (this.partition.getPartition().size()-1)*50){
+                while(diff > (this.partition.getPartition().size())*10){
                     
                     this.partition.getPartition().addElement(new Morceau());
-                    diff -= 50;
+                    diff -= 10;
                     i ++;
                     
                 }
-                
                 this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 5), diff);
   
             }
             
             
-        }        
+        }     
         
     }
     
@@ -975,7 +988,7 @@ public class Piano extends Game {
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
         
-        if (this.recording == true){
+         if (this.recording == true){
             
             int diff;
             int i;
@@ -1000,17 +1013,16 @@ public class Piano extends Game {
                     
                 }
                 
-                diff = diff/10;
+                diff = (int)(diff/2);
                 i = 0;
                 
-                while(diff > (this.partition.getPartition().size()-1)*50){
+                while(diff > (this.partition.getPartition().size())*10){
                     
                     this.partition.getPartition().addElement(new Morceau());
-                    diff -= 50;
+                    diff -= 10;
                     i ++;
                     
                 }
-                
                 this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 6), diff);
   
             }
@@ -1046,7 +1058,7 @@ public class Piano extends Game {
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
         
-        if (this.recording == true){
+         if (this.recording == true){
             
             int diff;
             int i;
@@ -1071,23 +1083,22 @@ public class Piano extends Game {
                     
                 }
                 
-                diff = diff/10;
+                diff = (int)(diff/2);
                 i = 0;
                 
-                while(diff > (this.partition.getPartition().size()-1)*50){
+                while(diff > (this.partition.getPartition().size())*10){
                     
                     this.partition.getPartition().addElement(new Morceau());
-                    diff -= 50;
+                    diff -= 10;
                     i ++;
                     
                 }
-                
                 this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 7), diff);
   
             }
             
             
-        }        
+        }       
     }
     
     private void jButton11MouseClicked() {   
@@ -1116,7 +1127,7 @@ public class Piano extends Game {
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
         
-        if (this.recording == true){
+          if (this.recording == true){
             
             int diff;
             int i;
@@ -1141,17 +1152,16 @@ public class Piano extends Game {
                     
                 }
                 
-                diff = diff/10;
+                diff = (int)(diff/2);
                 i = 0;
                 
-                while(diff > (this.partition.getPartition().size()-1)*50){
+                while(diff > (this.partition.getPartition().size())*10){
                     
                     this.partition.getPartition().addElement(new Morceau());
-                    diff -= 50;
+                    diff -= 10;
                     i ++;
                     
                 }
-                
                 this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 8), diff);
   
             }
@@ -1213,17 +1223,16 @@ public class Piano extends Game {
                     
                 }
                 
-                diff = diff/10;
+                diff = (int)(diff/2);
                 i = 0;
                 
-                while(diff > (this.partition.getPartition().size()-1)*50){
+                while(diff > (this.partition.getPartition().size())*10){
                     
                     this.partition.getPartition().addElement(new Morceau());
-                    diff -= 50;
+                    diff -= 10;
                     i ++;
                     
                 }
-                
                 this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 9), diff);
   
             }
@@ -1283,21 +1292,19 @@ public class Piano extends Game {
                     
                 }
                 
-                diff = diff/10;
+                diff = (int)(diff/2);
                 i = 0;
                 
-                while(diff > (this.partition.getPartition().size()-1)*50){
+                while(diff > (this.partition.getPartition().size())*10){
                     
                     this.partition.getPartition().addElement(new Morceau());
-                    diff -= 50;
+                    diff -= 10;
                     i ++;
                     
                 }
-                
                 this.partition.getPartition().get(i).ajouterNote(new Note(this.NOTE_SELECTED, 10), diff);
   
             }
-            
             
         }
         
@@ -1307,25 +1314,10 @@ public class Piano extends Game {
 
 
 
-    public void saveGame(File f){}
-    public void saveGame(){
-
-           
-    }
-    
-     /**
-     *
-     *
-     */
-    public void loadGame(File f){}
-    public void loadGame(){
-    System.out.println((new File(System.getProperty("user.dir") + "/src/piano/partitions/", "def.txt")).getAbsolutePath())  ;  
-    partition.loadPartition(new File(System.getProperty("user.dir") + "/src/piano/partitions/", "def.txt"));
-        
-    }
-    
-    public  void startGame(){}
-    public  void stopGame(){}
+    public void saveGame(File f){partition.savePartition(f);}
+    public void loadGame(File f){ partition.loadPartition(f);}
+    public  void startGame(){jButton1MouseClicked();}
+    public  void stopGame(){jButton2MouseClicked();}
     public void pauseGame(){}
 //start, stop and pause are useless since the Piano is not a "true" game;//useless since the Piano is not a "true" game
     

@@ -50,8 +50,17 @@ public class Note {
                 break;           
         }
         
-        this.ul = System.getProperty("user.dir") + "/src/piano/notes/"+retour+"/"+freq+".wav";
         this.freq = f;
+        if(f==0){
+            
+            this.freq = 10;
+        }
+        
+        
+        this.ul = System.getProperty("user.dir") + "/src/piano/notes/"+retour+"/"+freq+".wav";
+
+        
+        
         this.son = new Media(new File(ul).toURI().toString());
         
     }
@@ -129,7 +138,9 @@ public class Note {
     public void setFreq(int f){
 
         this.freq = f;
-
+        if (f == 0){
+               this.freq = 10;
+        }
     }
             /**
  *Obtenir la frequence de son, de 1 a 9
@@ -170,7 +181,12 @@ public class Note {
                 break;   
         }
         
-        retour += this.freq;
+        if (freq == 10){
+            retour += 0;
+        }
+        else{
+            retour += this.freq;
+        }
                 
         return(retour);       
     }

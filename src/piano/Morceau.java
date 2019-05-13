@@ -5,7 +5,7 @@
  */
 package piano;
 
-/*Un morceau dure 5 secondes, soit 50 ticks. Un tick correspond a 0.1 secondes. Une case de tableau vers la droite correspond a un tick.
+/*Un morceau dure 5 secondes, soit 10 ticks. Un tick correspond a 0.5 secondes. Une case de tableau vers la droite correspond a un tick.
 Si un utilisateur souhaite faire une partition de plus de 5 secondes, un deuxieme morceaun est creee. L'ensemble final sera a sauvegarder.*/
 
 /**
@@ -16,7 +16,7 @@ public class Morceau {
     
     private int duree;
     private Note[] morceau;
-    final int MAXTICK = 50;
+    final int MAXTICK = 20;
     
   /**
  *Construc par defaut

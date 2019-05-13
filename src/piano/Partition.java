@@ -30,6 +30,8 @@ public class Partition{
     public Partition(){
         
         partition = new Vector<Morceau>();
+        partition.addElement(new Morceau());
+        
         
     }
 
@@ -102,12 +104,12 @@ public class Partition{
  */ 
     public void loadPartition(java.io.File fichier){
         
+        this.partition = new Vector<Morceau>();
         char[] contenu = new char[0];
-        String reading = "";
+        String reading = ""; String temp;
         int i = 0; 
         int j;
         int g = 0;
-        System.out.println(fichier.getAbsolutePath());
         try{
                 
                
@@ -120,27 +122,19 @@ public class Partition{
                         }
         catch (FileNotFoundException f) {
 	    	System.out.println("Probleme de fichier avec " + fichier.getName() + f.getMessage());
-        }
-        catch (IOException err) {
-	    	System.out.println("Probleme de lecture : " + err.getMessage());
-        }    
+        }   
                 
-        for(i = 0;i <contenu.length;i++){
-            
-            System.out.println(contenu[i]);
-        }
-              /*  while(contenu.length > 1 && contenu[i]!='#'){//fichier fini?
+                while(contenu.length > 1 && i<contenu.length && contenu[i]!='#'){//fichier fini?
                     
                     this.partition.add(g, new Morceau());
                         
                         j = 0;
                         
-                        while(contenu[i]!='|'){//nouveau morceau
+                        while(contenu.length > 1 && i<contenu.length && contenu[i]!='|' && contenu[i]!='#'){//nouveau morceau
                             
                             if(contenu[i]!='0'){
                             
                                 this.partition.get(g).ajouterNote(new Note(), j);
-                                
                                 switch(contenu[i]){
                                     case 'p':
                                       this.partition.get(g).getNote(j).setType(TypeNote.PIANO);
@@ -160,11 +154,12 @@ public class Partition{
                                     }
                         
                                      i++;
-                            
-                                     this.partition.get(g).getNote(j).setFreq((int)(contenu[i]));
+                                         temp = "" + contenu[i];
+                                     this.partition.get(g).getNote(j).setFreq((((Integer.parseInt(temp)))));
                                      this.partition.get(g).getNote(j).setURL();
                                      this.partition.get(g).getNote(j).setSon();
-                            
+                                     
+                                     
                                      i++;
                             }
                             else{
@@ -175,12 +170,14 @@ public class Partition{
                     }
                     this.partition.get(g).nouvelleDuree();
                     
-                    i++;
+                    if(contenu[i]!='#' && i<contenu.length){
+                        i++;
+                    }
+                    
                     g++;
                     
-                    
                 }
-        */
+        
                 
      
      } 
@@ -210,9 +207,12 @@ public class Partition{
                
                for (i = 0; i<tab.length; i++){
                    
-                   tab[i].setType(t);
-                   tab[i].setURL();
-                   tab[i].setSon();
+                   if(tab[i]!=null){
+                   
+                     tab[i].setType(t);
+                     tab[i].setURL();
+                     tab[i].setSon();
+                   }
                }
          }
     } 

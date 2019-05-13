@@ -20,7 +20,7 @@ import piano.*;
 /**
  * FXML Controller class
  *
- * @author Antoine
+ * @author JC
  */
 public class LauncherController implements Initializable {
 
